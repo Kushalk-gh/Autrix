@@ -1,0 +1,2295 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Orchestry - Container Orchestration and Auto-Scaling Platform">
+      
+      
+      
+        <link rel="canonical" href="https://admincodes7.github.io/Orchestry/user-guide/dashboard-and-swagger-examples/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/l0g0.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Ten Application Examples for the Dashboard and Swagger - Orchestry Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/overrides.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ten-application-examples-for-the-dashboard-and-swagger" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Orchestry Documentation" class="md-header__button md-logo" aria-label="Orchestry Documentation" data-md-component="logo">
+      
+  <img src="../../images/l0g0.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Orchestry Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ten Application Examples for the Dashboard and Swagger
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="grey"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/admincodes7/Orchestry" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    admincodes7/Orchestry
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../quick-start/" class="md-tabs__link">
+          
+  
+  
+  User Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../developer-guide/architecture/" class="md-tabs__link">
+          
+  
+  
+  Developer Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../examples/applications/" class="md-tabs__link">
+          
+  
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Orchestry Documentation" class="md-nav__button md-logo" aria-label="Orchestry Documentation" data-md-component="logo">
+      
+  <img src="../../images/l0g0.png" alt="logo">
+
+    </a>
+    Orchestry Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/admincodes7/Orchestry" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    admincodes7/Orchestry
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../app-spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application Specification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Developer Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/leader-election/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Leader Election
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/scaling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scaling Algorithm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/health/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Health Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/load-balancing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Load Balancing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#open-the-two-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open the two interfaces
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-before-registering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important before registering
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-enter-an-operation-in-swagger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to enter an operation in Swagger
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-1-demo-storefront" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 1 — demo-storefront
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example 1 — demo-storefront">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-this-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Register this application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operate-demo-storefront" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operate demo-storefront
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-2-demo-blog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 2 — demo-blog
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example 2 — demo-blog">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-this-application_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Register this application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operate-demo-blog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operate demo-blog
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-3-demo-help-center" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 3 — demo-help-center
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example 3 — demo-help-center">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-this-application_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Register this application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operate-demo-help-center" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operate demo-help-center
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-4-demo-campaign" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 4 — demo-campaign
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example 4 — demo-campaign">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-this-application_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Register this application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operate-demo-campaign" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operate demo-campaign
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-5-demo-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 5 — demo-inventory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example 5 — demo-inventory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-this-application_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Register this application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operate-demo-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operate demo-inventory
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-6-demo-checkout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 6 — demo-checkout
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example 6 — demo-checkout">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-this-application_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Register this application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operate-demo-checkout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operate demo-checkout
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-7-demo-news" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 7 — demo-news
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example 7 — demo-news">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-this-application_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Register this application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operate-demo-news" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operate demo-news
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-8-demo-status-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 8 — demo-status-page
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example 8 — demo-status-page">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-this-application_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Register this application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operate-demo-status-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operate demo-status-page
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-9-demo-landing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 9 — demo-landing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example 9 — demo-landing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-this-application_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Register this application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operate-demo-landing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operate demo-landing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-10-demo-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 10 — demo-docs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example 10 — demo-docs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-this-application_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Register this application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operate-demo-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operate demo-docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operations-shared-by-all-ten-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operations shared by all ten applications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#does-the-same-json-and-procedure-work-in-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Does the same JSON and procedure work in /docs?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operation-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operation coverage
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ten-application-examples-for-the-dashboard-and-swagger">Ten Application Examples for the Dashboard and Swagger<a class="headerlink" href="#ten-application-examples-for-the-dashboard-and-swagger" title="Permanent link">&para;</a></h1>
+<p>This guide provides <strong>ten separate application registrations</strong>, each with its
+own copy-ready JSON and an operation procedure for that named application.
+Use the Dashboard's guided forms or the same controller API through Swagger.
+The examples use the API paths and request fields published by the running
+controller.</p>
+<h2 id="open-the-two-interfaces">Open the two interfaces<a class="headerlink" href="#open-the-two-interfaces" title="Permanent link">&para;</a></h2>
+<p>These links assume the controller is available at <code>127.0.0.1:8003</code>:</p>
+<ul>
+<li><a href="http://127.0.0.1:8003/dashboard#/dashboard">New Dashboard</a></li>
+<li><a href="http://127.0.0.1:8003/docs#/">Swagger API docs</a></li>
+</ul>
+<p>If your controller uses another address, substitute its host and port.</p>
+<h2 id="important-before-registering">Important before registering<a class="headerlink" href="#important-before-registering" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Each example has its own unique lowercase application name. Register each
+  JSON body only once. If a name is already in use, either use the existing
+  registration or change <code>metadata.name</code> and its <code>metadata.labels.app</code> value
+  to a new unique name.</li>
+<li>All ten examples use <code>nginx:alpine</code>, which listens on container port <code>80</code>.
+  This keeps the app settings valid and consistent. The different names,
+  labels, scaling settings, and health-check paths make each registration
+  distinct.</li>
+<li>Registering saves the app specification; it does <strong>not</strong> start the app.
+  The procedure for each app includes a separate start action.</li>
+<li>Starting/scaling apps creates Docker containers and consumes resources.
+  Start only the examples you intend to try; you do not need to run all ten
+  simultaneously.</li>
+<li>The simulated-metrics examples set <code>evaluate</code> to <code>false</code>. These are test
+  values, not real measurements. Keeping evaluation false avoids asking the
+  controller to scale based on the test values.</li>
+<li>Stop keeps an app registered. Delete removes its registration. Both are
+  optional cleanup steps; delete only an app you no longer need.</li>
+</ul>
+<h2 id="how-to-enter-an-operation-in-swagger">How to enter an operation in Swagger<a class="headerlink" href="#how-to-enter-an-operation-in-swagger" title="Permanent link">&para;</a></h2>
+<p>For a route containing <code>{name}</code>, open that operation in Swagger, choose
+<strong>Try it out</strong>, enter the example's application name in the <code>name</code> path
+parameter, fill any JSON request body shown below, and choose <strong>Execute</strong>.
+Operations without a body should be executed with the body field empty.</p>
+<h2 id="example-1-demo-storefront">Example 1 — <code>demo-storefront</code><a class="headerlink" href="#example-1-demo-storefront" title="Permanent link">&para;</a></h2>
+<h3 id="register-this-application">Register this application<a class="headerlink" href="#register-this-application" title="Permanent link">&para;</a></h3>
+<p>In the Dashboard, choose <strong>Applications</strong> → <strong>Create application</strong> and use
+these values: name <code>demo-storefront</code>, version <code>v1</code>, HTTP web application,
+image <code>nginx:alpine</code>, port <code>80</code>, CPU <code>100m</code>, memory <code>128Mi</code>, automatic scaling
+with minimum <code>1</code>, maximum <code>3</code>, requests per instance <code>50</code>, max latency <code>250</code>
+ms, health-check path <code>/</code>, and health-check port <code>80</code>. Review and register.</p>
+<p>In Swagger, use <strong>POST <code>/apps/register</code></strong>, then paste:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"App"</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-storefront"</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">      </span><span class="nt">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-storefront"</span><span class="p">,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="nt">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span><span class="p">,</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx:alpine"</span><span class="p">,</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="nt">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HTTP"</span><span class="p">}],</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="nt">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100m"</span><span class="p">,</span><span class="w"> </span><span class="nt">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128Mi"</span><span class="p">},</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="nt">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="nt">"scaling"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="nt">"minReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="nt">"maxReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="nt">"targetRPSPerReplica"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="nt">"maxP95LatencyMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="nt">"scaleOutThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="nt">"scaleInThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="nt">"windowSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="nt">"cooldownSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">  </span><span class="nt">"healthCheck"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">}</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="operate-demo-storefront">Operate <code>demo-storefront</code><a class="headerlink" href="#operate-demo-storefront" title="Permanent link">&para;</a></h3>
+<p>Follow these steps after registering. For each Swagger route, substitute the
+name <code>demo-storefront</code> for <code>{name}</code>.</p>
+<ol>
+<li><strong>Start:</strong> Dashboard → <strong>Applications</strong> → <strong>Start</strong> on this app.
+   Swagger: <code>POST /apps/demo-storefront/up</code>, no body.</li>
+<li><strong>Check status:</strong> Dashboard → select the app → <strong>Overview</strong>.
+   Swagger: <code>GET /apps/demo-storefront/status</code>, no body.</li>
+<li><strong>Scale to two instances:</strong> Dashboard → <strong>Overview</strong> → desired instances
+   <code>2</code> → <strong>Save replica count</strong>. Swagger: <code>POST /apps/demo-storefront/scale</code>,
+   body <code>{"replicas": 2}</code>.</li>
+<li><strong>Set its scaling policy:</strong> Dashboard → <strong>Advanced tools</strong> → select this app
+   and enter minimum <code>1</code>, maximum <code>3</code>, requests/instance <code>50</code>, max latency
+   <code>250</code>, scale-out <code>80</code>, scale-in <code>30</code>. Swagger:
+   <code>POST /apps/demo-storefront/policy</code>, body
+   <code>{"policy":{"minReplicas":1,"maxReplicas":3,"targetRPSPerReplica":50,"maxP95LatencyMs":250,"scaleOutThresholdPct":80,"scaleInThresholdPct":30}}</code>.</li>
+<li><strong>Inspect configuration:</strong> Dashboard → app <strong>Details</strong> → <strong>Configuration</strong>.
+   Swagger: <code>GET /apps/demo-storefront/raw</code>, no body.</li>
+<li><strong>Read logs:</strong> Dashboard → app <strong>Details</strong> → <strong>Logs</strong>.
+   Swagger: <code>GET /apps/demo-storefront/logs?lines=100</code>, no body.</li>
+<li><strong>Read app metrics:</strong> Dashboard → app <strong>Details</strong> → <strong>Metrics</strong>.
+   Swagger: <code>GET /apps/demo-storefront/metrics</code>, no body.</li>
+<li><strong>Submit safe test metrics:</strong> Dashboard → <strong>Advanced tools</strong> → select this
+   app; enter RPS <code>10</code>, latency <code>80</code>, connections <code>3</code>, CPU <code>20</code>, memory <code>35</code>;
+   leave healthy instances blank and uncheck evaluation. Swagger:
+   <code>POST /apps/demo-storefront/simulateMetrics</code>, body
+   <code>{"rps":10,"p95LatencyMs":80,"activeConnections":3,"cpuPercent":20,"memoryPercent":35,"evaluate":false}</code>.</li>
+<li><strong>Stop (optional):</strong> Dashboard → <strong>Stop</strong> and confirm.
+   Swagger: <code>POST /apps/demo-storefront/down</code>, no body.</li>
+<li><strong>Delete (optional):</strong> Dashboard → <strong>Delete</strong> and confirm.
+    Swagger: <code>DELETE /apps/demo-storefront</code>, no body.</li>
+</ol>
+<h2 id="example-2-demo-blog">Example 2 — <code>demo-blog</code><a class="headerlink" href="#example-2-demo-blog" title="Permanent link">&para;</a></h2>
+<h3 id="register-this-application_1">Register this application<a class="headerlink" href="#register-this-application_1" title="Permanent link">&para;</a></h3>
+<p>Dashboard wizard values: name <code>demo-blog</code>, version <code>v1</code>, HTTP web application,
+image <code>nginx:alpine</code>, port <code>80</code>, CPU <code>100m</code>, memory <code>128Mi</code>, automatic
+scaling, minimum <code>1</code>, maximum <code>4</code>, requests/instance <code>75</code>, max latency <code>300</code>
+ms, health path <code>/</code>, health port <code>80</code>.</p>
+<p>Swagger operation: <strong>POST <code>/apps/register</code></strong>. Request body:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"App"</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-blog"</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nt">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">      </span><span class="nt">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-blog"</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="nt">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span><span class="p">,</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx:alpine"</span><span class="p">,</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="nt">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HTTP"</span><span class="p">}],</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="nt">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100m"</span><span class="p">,</span><span class="w"> </span><span class="nt">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128Mi"</span><span class="p">},</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="nt">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">  </span><span class="nt">"scaling"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="nt">"minReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="nt">"maxReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="nt">"targetRPSPerReplica"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="nt">"maxP95LatencyMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span><span class="nt">"scaleOutThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="nt">"scaleInThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="nt">"windowSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="nt">"cooldownSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">  </span><span class="nt">"healthCheck"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">}</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="operate-demo-blog">Operate <code>demo-blog</code><a class="headerlink" href="#operate-demo-blog" title="Permanent link">&para;</a></h3>
+<p>Use the procedure in Example 1, substituting <code>demo-blog</code> in every operation
+and selecting <code>demo-blog</code> in Dashboard dropdowns. For this app, scale to <code>2</code>
+with <code>POST /apps/demo-blog/scale</code> and <code>{"replicas":2}</code>. Set the policy to
+minimum <code>1</code>, maximum <code>4</code>, requests/instance <code>75</code>, max latency <code>300</code>, and
+thresholds <code>80</code>/<code>30</code>. For test metrics, use RPS <code>15</code>, latency <code>100</code>,
+connections <code>5</code>, CPU <code>25</code>, memory <code>40</code>, and <code>evaluate:false</code>.</p>
+<p>App-specific Swagger routes: <code>POST /apps/demo-blog/up</code>,
+<code>GET /apps/demo-blog/status</code>, <code>POST /apps/demo-blog/scale</code>,
+<code>POST /apps/demo-blog/policy</code>, <code>GET /apps/demo-blog/raw</code>,
+<code>GET /apps/demo-blog/logs?lines=100</code>, <code>GET /apps/demo-blog/metrics</code>,
+<code>POST /apps/demo-blog/simulateMetrics</code>, <code>POST /apps/demo-blog/down</code>, and
+<code>DELETE /apps/demo-blog</code>. The <code>up</code>, status, raw, logs, metrics, and down
+operations have no body. The policy body follows Example 1's shape with this
+app's values. The simulated body is
+<code>{"rps":15,"p95LatencyMs":100,"activeConnections":5,"cpuPercent":25,"memoryPercent":40,"evaluate":false}</code>.</p>
+<p>Dashboard: start/stop from <strong>Applications</strong>; use this app's <strong>Details</strong>
+sections for Overview, Configuration, Logs, and Metrics; use <strong>Advanced
+tools</strong> for its policy and safe simulated-metrics submission.</p>
+<h2 id="example-3-demo-help-center">Example 3 — <code>demo-help-center</code><a class="headerlink" href="#example-3-demo-help-center" title="Permanent link">&para;</a></h2>
+<h3 id="register-this-application_2">Register this application<a class="headerlink" href="#register-this-application_2" title="Permanent link">&para;</a></h3>
+<p>Dashboard wizard values: name <code>demo-help-center</code>, version <code>v1</code>, HTTP web
+application, image <code>nginx:alpine</code>, port <code>80</code>, CPU <code>100m</code>, memory <code>128Mi</code>,
+automatic scaling, minimum <code>1</code>, maximum <code>2</code>, requests/instance <code>40</code>, max
+latency <code>220</code> ms, health path <code>/</code>, health port <code>80</code>.</p>
+<p>Swagger operation: <strong>POST <code>/apps/register</code></strong>. Request body:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"App"</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-help-center"</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nt">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">      </span><span class="nt">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-help-center"</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">  </span><span class="nt">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span><span class="p">,</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx:alpine"</span><span class="p">,</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="nt">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HTTP"</span><span class="p">}],</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="nt">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100m"</span><span class="p">,</span><span class="w"> </span><span class="nt">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128Mi"</span><span class="p">},</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="nt">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span><span class="nt">"scaling"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="nt">"minReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="nt">"maxReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="nt">"targetRPSPerReplica"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="nt">"maxP95LatencyMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">220</span><span class="p">,</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">    </span><span class="nt">"scaleOutThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">    </span><span class="nt">"scaleInThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">    </span><span class="nt">"windowSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">    </span><span class="nt">"cooldownSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">  </span><span class="nt">"healthCheck"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">}</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="operate-demo-help-center">Operate <code>demo-help-center</code><a class="headerlink" href="#operate-demo-help-center" title="Permanent link">&para;</a></h3>
+<p>Use Example 1's ten-step procedure, substituting <code>demo-help-center</code> for the
+app name in the Dashboard and in every <code>{name}</code> path parameter. Scale to <code>2</code>
+with <code>POST /apps/demo-help-center/scale</code>, body <code>{"replicas":2}</code>. Set its
+policy to minimum <code>1</code>, maximum <code>2</code>, requests/instance <code>40</code>, max latency <code>220</code>,
+scale thresholds <code>80</code> and <code>30</code>. Use safe simulated values RPS <code>8</code>, latency
+<code>70</code>, connections <code>2</code>, CPU <code>15</code>, memory <code>30</code>, <code>evaluate:false</code>.</p>
+<p>The app-specific Swagger operations are:</p>
+<table>
+<thead>
+<tr>
+<th>Purpose</th>
+<th>Method and path</th>
+<th>Body</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start</td>
+<td><code>POST /apps/demo-help-center/up</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td>Status</td>
+<td><code>GET /apps/demo-help-center/status</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td>Manual scale</td>
+<td><code>POST /apps/demo-help-center/scale</code></td>
+<td><code>{"replicas":2}</code></td>
+</tr>
+<tr>
+<td>Scaling policy</td>
+<td><code>POST /apps/demo-help-center/policy</code></td>
+<td><code>{"policy":{"minReplicas":1,"maxReplicas":2,"targetRPSPerReplica":40,"maxP95LatencyMs":220,"scaleOutThresholdPct":80,"scaleInThresholdPct":30}}</code></td>
+</tr>
+<tr>
+<td>Configuration</td>
+<td><code>GET /apps/demo-help-center/raw</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td>Logs</td>
+<td><code>GET /apps/demo-help-center/logs?lines=100</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td>App metrics</td>
+<td><code>GET /apps/demo-help-center/metrics</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td>Safe simulated metrics</td>
+<td><code>POST /apps/demo-help-center/simulateMetrics</code></td>
+<td><code>{"rps":8,"p95LatencyMs":70,"activeConnections":2,"cpuPercent":15,"memoryPercent":30,"evaluate":false}</code></td>
+</tr>
+<tr>
+<td>Stop</td>
+<td><code>POST /apps/demo-help-center/down</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td>Delete (optional)</td>
+<td><code>DELETE /apps/demo-help-center</code></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p>Dashboard actions are available from <strong>Applications</strong>, this app's <strong>Details</strong>
+tabs, and <strong>Advanced tools</strong> as in Example 1.</p>
+<h2 id="example-4-demo-campaign">Example 4 — <code>demo-campaign</code><a class="headerlink" href="#example-4-demo-campaign" title="Permanent link">&para;</a></h2>
+<h3 id="register-this-application_3">Register this application<a class="headerlink" href="#register-this-application_3" title="Permanent link">&para;</a></h3>
+<p>Dashboard wizard values: name <code>demo-campaign</code>, version <code>v1</code>, HTTP web
+application, image <code>nginx:alpine</code>, port <code>80</code>, CPU <code>100m</code>, memory <code>128Mi</code>,
+automatic scaling, minimum <code>1</code>, maximum <code>5</code>, requests/instance <code>100</code>, max
+latency <code>350</code> ms, health path <code>/</code>, health port <code>80</code>.</p>
+<p>Swagger operation: <strong>POST <code>/apps/register</code></strong>. Request body:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"App"</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nt">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-campaign"</span><span class="p">,</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nt">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">      </span><span class="nt">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-campaign"</span><span class="p">,</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span><span class="nt">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span><span class="p">,</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx:alpine"</span><span class="p">,</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="nt">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HTTP"</span><span class="p">}],</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="nt">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100m"</span><span class="p">,</span><span class="w"> </span><span class="nt">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128Mi"</span><span class="p">},</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="nt">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">  </span><span class="nt">"scaling"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">    </span><span class="nt">"minReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="nt">"maxReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">    </span><span class="nt">"targetRPSPerReplica"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="nt">"maxP95LatencyMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">350</span><span class="p">,</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">    </span><span class="nt">"scaleOutThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">    </span><span class="nt">"scaleInThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">    </span><span class="nt">"windowSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">    </span><span class="nt">"cooldownSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">  </span><span class="nt">"healthCheck"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">}</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="operate-demo-campaign">Operate <code>demo-campaign</code><a class="headerlink" href="#operate-demo-campaign" title="Permanent link">&para;</a></h3>
+<p>Use Example 1's procedure with <code>demo-campaign</code> as the app name. Start using
+<code>POST /apps/demo-campaign/up</code>; inspect with
+<code>GET /apps/demo-campaign/status</code>, <code>/raw</code>, <code>/logs?lines=100</code>, and <code>/metrics</code>
+(each full path begins <code>/apps/demo-campaign</code>). Scale to <code>3</code> using
+<code>POST /apps/demo-campaign/scale</code> with <code>{"replicas":3}</code>. Set policy minimum
+<code>1</code>, maximum <code>5</code>, requests/instance <code>100</code>, max latency <code>350</code>, thresholds
+<code>80</code>/<code>30</code>, using the Example 1 policy shape. Submit safe test metrics with
+RPS <code>25</code>, latency <code>120</code>, connections <code>8</code>, CPU <code>30</code>, memory <code>45</code>, and
+<code>evaluate:false</code>.</p>
+<p>For Swagger, send the policy to <code>POST /apps/demo-campaign/policy</code> and the
+test metrics to <code>POST /apps/demo-campaign/simulateMetrics</code>. Use the JSON
+shapes in Example 1 with the values above.</p>
+<p>Stop with <code>POST /apps/demo-campaign/down</code>; delete only if wanted with
+<code>DELETE /apps/demo-campaign</code>. Both take no body. Dashboard: use <strong>Start</strong> or
+<strong>Stop</strong> on its application row, the app's <strong>Details</strong> tabs, and select this
+app in <strong>Advanced tools</strong> for scaling policy and simulated metrics.</p>
+<h2 id="example-5-demo-inventory">Example 5 — <code>demo-inventory</code><a class="headerlink" href="#example-5-demo-inventory" title="Permanent link">&para;</a></h2>
+<h3 id="register-this-application_4">Register this application<a class="headerlink" href="#register-this-application_4" title="Permanent link">&para;</a></h3>
+<p>Dashboard wizard values: name <code>demo-inventory</code>, version <code>v1</code>, HTTP web
+application, image <code>nginx:alpine</code>, port <code>80</code>, CPU <code>100m</code>, memory <code>128Mi</code>,
+automatic scaling, minimum <code>1</code>, maximum <code>3</code>, requests/instance <code>60</code>, max
+latency <code>280</code> ms, health path <code>/</code>, health port <code>80</code>.</p>
+<p>Swagger operation: <strong>POST <code>/apps/register</code></strong>. Request body:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"App"</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nt">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-inventory"</span><span class="p">,</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nt">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">      </span><span class="nt">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-inventory"</span><span class="p">,</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="nt">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span><span class="p">,</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx:alpine"</span><span class="p">,</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="nt">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HTTP"</span><span class="p">}],</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="nt">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100m"</span><span class="p">,</span><span class="w"> </span><span class="nt">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128Mi"</span><span class="p">},</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="nt">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">  </span><span class="nt">"scaling"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="nt">"minReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="nt">"maxReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">    </span><span class="nt">"targetRPSPerReplica"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">    </span><span class="nt">"maxP95LatencyMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">280</span><span class="p">,</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">    </span><span class="nt">"scaleOutThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">    </span><span class="nt">"scaleInThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">    </span><span class="nt">"windowSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">    </span><span class="nt">"cooldownSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">  </span><span class="nt">"healthCheck"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">}</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="operate-demo-inventory">Operate <code>demo-inventory</code><a class="headerlink" href="#operate-demo-inventory" title="Permanent link">&para;</a></h3>
+<p>Use Example 1's procedure with <code>demo-inventory</code> as the name for every
+Dashboard selection and Swagger <code>name</code> parameter. Scale to <code>2</code> with
+<code>POST /apps/demo-inventory/scale</code>, body <code>{"replicas":2}</code>. Set policy values
+minimum <code>1</code>, maximum <code>3</code>, requests/instance <code>60</code>, max latency <code>280</code>,
+thresholds <code>80</code>/<code>30</code>. For safe simulated values use RPS <code>12</code>, latency <code>90</code>,
+connections <code>4</code>, CPU <code>22</code>, memory <code>38</code>, and <code>evaluate:false</code>.</p>
+<p>Swagger routes for this app: <code>POST /apps/demo-inventory/up</code>,
+<code>GET /apps/demo-inventory/status</code>, <code>POST /apps/demo-inventory/scale</code>,
+<code>POST /apps/demo-inventory/policy</code>, <code>GET /apps/demo-inventory/raw</code>,
+<code>GET /apps/demo-inventory/logs?lines=100</code>,
+<code>GET /apps/demo-inventory/metrics</code>,
+<code>POST /apps/demo-inventory/simulateMetrics</code>,
+<code>POST /apps/demo-inventory/down</code>, and <code>DELETE /apps/demo-inventory</code>.
+Use no body for start, status, reads, stop, and delete. Use the scale,
+policy, and simulated-metrics values stated above for their respective bodies.
+In the Dashboard use this app's <strong>Details</strong> tabs and select it in
+<strong>Advanced tools</strong>.</p>
+<h2 id="example-6-demo-checkout">Example 6 — <code>demo-checkout</code><a class="headerlink" href="#example-6-demo-checkout" title="Permanent link">&para;</a></h2>
+<h3 id="register-this-application_5">Register this application<a class="headerlink" href="#register-this-application_5" title="Permanent link">&para;</a></h3>
+<p>Dashboard wizard values: name <code>demo-checkout</code>, version <code>v1</code>, HTTP web
+application, image <code>nginx:alpine</code>, port <code>80</code>, CPU <code>100m</code>, memory <code>128Mi</code>,
+automatic scaling, minimum <code>1</code>, maximum <code>4</code>, requests/instance <code>45</code>, max
+latency <code>200</code> ms, health path <code>/</code>, health port <code>80</code>.</p>
+<p>Swagger operation: <strong>POST <code>/apps/register</code></strong>. Request body:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"App"</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nt">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-checkout"</span><span class="p">,</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nt">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">      </span><span class="nt">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-checkout"</span><span class="p">,</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span><span class="nt">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span><span class="p">,</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx:alpine"</span><span class="p">,</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="nt">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HTTP"</span><span class="p">}],</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="nt">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100m"</span><span class="p">,</span><span class="w"> </span><span class="nt">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128Mi"</span><span class="p">},</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="nt">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">  </span><span class="nt">"scaling"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">    </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="nt">"minReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">    </span><span class="nt">"maxReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">    </span><span class="nt">"targetRPSPerReplica"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">    </span><span class="nt">"maxP95LatencyMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">    </span><span class="nt">"scaleOutThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">    </span><span class="nt">"scaleInThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">    </span><span class="nt">"windowSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">    </span><span class="nt">"cooldownSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">  </span><span class="nt">"healthCheck"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">}</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="operate-demo-checkout">Operate <code>demo-checkout</code><a class="headerlink" href="#operate-demo-checkout" title="Permanent link">&para;</a></h3>
+<p>Use Example 1's procedure, substituting <code>demo-checkout</code> throughout. Start:
+<code>POST /apps/demo-checkout/up</code>. Check:
+<code>GET /apps/demo-checkout/status</code>. Scale to <code>2</code>:
+<code>POST /apps/demo-checkout/scale</code> with <code>{"replicas":2}</code>. Set policy minimum
+<code>1</code>, maximum <code>4</code>, target RPS <code>45</code>, max latency <code>200</code>, thresholds <code>80</code>/<code>30</code>
+using the policy body shape from Example 1. Use safe simulated metrics RPS <code>6</code>,
+latency <code>60</code>, connections <code>2</code>, CPU <code>12</code>, memory <code>25</code>, <code>evaluate:false</code>.
+Inspect <code>/apps/demo-checkout/raw</code>, <code>/logs?lines=100</code>, and <code>/metrics</code> using
+GET requests with no bodies. Stop with
+<code>POST /apps/demo-checkout/down</code>; optional delete:
+<code>DELETE /apps/demo-checkout</code>. Both have no body.</p>
+<p>Send policy values to <code>POST /apps/demo-checkout/policy</code> and safe sample
+values to <code>POST /apps/demo-checkout/simulateMetrics</code>. Use the JSON shapes in
+Example 1 with this app's values.</p>
+<p>Dashboard: start and stop from <strong>Applications</strong>, inspect this app's
+<strong>Overview</strong>, <strong>Configuration</strong>, <strong>Logs</strong>, and <strong>Metrics</strong>, and choose
+<code>demo-checkout</code> in <strong>Advanced tools</strong> for scaling and simulated metrics.</p>
+<h2 id="example-7-demo-news">Example 7 — <code>demo-news</code><a class="headerlink" href="#example-7-demo-news" title="Permanent link">&para;</a></h2>
+<h3 id="register-this-application_6">Register this application<a class="headerlink" href="#register-this-application_6" title="Permanent link">&para;</a></h3>
+<p>Dashboard wizard values: name <code>demo-news</code>, version <code>v1</code>, HTTP web application,
+image <code>nginx:alpine</code>, port <code>80</code>, CPU <code>100m</code>, memory <code>128Mi</code>, automatic
+scaling, minimum <code>1</code>, maximum <code>3</code>, requests/instance <code>80</code>, max latency <code>320</code>
+ms, health path <code>/</code>, health port <code>80</code>.</p>
+<p>Swagger operation: <strong>POST <code>/apps/register</code></strong>. Request body:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span><span class="p">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"App"</span><span class="p">,</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="nt">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-news"</span><span class="p">,</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="nt">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">      </span><span class="nt">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-news"</span><span class="p">,</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">  </span><span class="nt">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span><span class="p">,</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx:alpine"</span><span class="p">,</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">    </span><span class="nt">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HTTP"</span><span class="p">}],</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">    </span><span class="nt">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100m"</span><span class="p">,</span><span class="w"> </span><span class="nt">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128Mi"</span><span class="p">},</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span><span class="nt">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">  </span><span class="nt">"scaling"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">    </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">    </span><span class="nt">"minReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">    </span><span class="nt">"maxReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">    </span><span class="nt">"targetRPSPerReplica"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">    </span><span class="nt">"maxP95LatencyMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">320</span><span class="p">,</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">    </span><span class="nt">"scaleOutThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">    </span><span class="nt">"scaleInThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">    </span><span class="nt">"windowSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">    </span><span class="nt">"cooldownSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="w">  </span><span class="nt">"healthCheck"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">}</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="operate-demo-news">Operate <code>demo-news</code><a class="headerlink" href="#operate-demo-news" title="Permanent link">&para;</a></h3>
+<p>Use Example 1's procedure with <code>demo-news</code>. Start with
+<code>POST /apps/demo-news/up</code>; inspect status with
+<code>GET /apps/demo-news/status</code>. Scale to <code>2</code> using
+<code>POST /apps/demo-news/scale</code> and <code>{"replicas":2}</code>. Set policy minimum <code>1</code>,
+maximum <code>3</code>, target RPS <code>80</code>, max latency <code>320</code>, thresholds <code>80</code>/<code>30</code>.
+Simulated values: RPS <code>18</code>, latency <code>110</code>, connections <code>6</code>, CPU <code>27</code>,
+memory <code>42</code>, and <code>evaluate:false</code>.</p>
+<p>Use GET <code>/apps/demo-news/raw</code>, <code>/apps/demo-news/logs?lines=100</code>, and
+<code>/apps/demo-news/metrics</code> for configuration, logs, and metrics. GET requests
+need no body. Stop with <code>POST /apps/demo-news/down</code>; optionally remove it
+with <code>DELETE /apps/demo-news</code>. Both need no body. The Dashboard equivalents
+are the app row's <strong>Start/Stop</strong>, its <strong>Details</strong> tabs, and its selection in
+<strong>Advanced tools</strong>.</p>
+<p>In Swagger, send the policy to <code>POST /apps/demo-news/policy</code> and simulated
+values to <code>POST /apps/demo-news/simulateMetrics</code>, using the JSON shapes in
+Example 1 with the values above.</p>
+<h2 id="example-8-demo-status-page">Example 8 — <code>demo-status-page</code><a class="headerlink" href="#example-8-demo-status-page" title="Permanent link">&para;</a></h2>
+<h3 id="register-this-application_7">Register this application<a class="headerlink" href="#register-this-application_7" title="Permanent link">&para;</a></h3>
+<p>Dashboard wizard values: name <code>demo-status-page</code>, version <code>v1</code>, HTTP web
+application, image <code>nginx:alpine</code>, port <code>80</code>, CPU <code>100m</code>, memory <code>128Mi</code>,
+automatic scaling, minimum <code>1</code>, maximum <code>2</code>, requests/instance <code>30</code>, max
+latency <code>180</code> ms, health path <code>/</code>, health port <code>80</code>.</p>
+<p>Swagger operation: <strong>POST <code>/apps/register</code></strong>. Request body:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span><span class="p">,</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"App"</span><span class="p">,</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="nt">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-status-page"</span><span class="p">,</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="nt">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">      </span><span class="nt">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-status-page"</span><span class="p">,</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">  </span><span class="nt">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span><span class="p">,</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx:alpine"</span><span class="p">,</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">    </span><span class="nt">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HTTP"</span><span class="p">}],</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">    </span><span class="nt">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100m"</span><span class="p">,</span><span class="w"> </span><span class="nt">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128Mi"</span><span class="p">},</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">    </span><span class="nt">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">  </span><span class="nt">"scaling"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">    </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">    </span><span class="nt">"minReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">    </span><span class="nt">"maxReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">    </span><span class="nt">"targetRPSPerReplica"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="w">    </span><span class="nt">"maxP95LatencyMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">    </span><span class="nt">"scaleOutThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">    </span><span class="nt">"scaleInThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">    </span><span class="nt">"windowSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">    </span><span class="nt">"cooldownSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="w">  </span><span class="nt">"healthCheck"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">}</span>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="operate-demo-status-page">Operate <code>demo-status-page</code><a class="headerlink" href="#operate-demo-status-page" title="Permanent link">&para;</a></h3>
+<p>Use Example 1's ten-step procedure with <code>demo-status-page</code> in every name and
+dropdown. Start it via <code>POST /apps/demo-status-page/up</code>; check
+<code>GET /apps/demo-status-page/status</code>. Scale to <code>2</code> using
+<code>POST /apps/demo-status-page/scale</code> with <code>{"replicas":2}</code>. Set policy
+minimum <code>1</code>, maximum <code>2</code>, target RPS <code>30</code>, max latency <code>180</code>, thresholds
+<code>80</code>/<code>30</code>. Safe test metrics: RPS <code>5</code>, latency <code>50</code>, connections <code>1</code>,
+CPU <code>10</code>, memory <code>20</code>, <code>evaluate:false</code>.</p>
+<p>Inspect the app using <code>GET /apps/demo-status-page/raw</code>,
+<code>GET /apps/demo-status-page/logs?lines=100</code>, and
+<code>GET /apps/demo-status-page/metrics</code> (no body). Stop with
+<code>POST /apps/demo-status-page/down</code>. Optional permanent cleanup is
+<code>DELETE /apps/demo-status-page</code>. Dashboard: use <strong>Start/Stop</strong> in
+<strong>Applications</strong>, app <strong>Details</strong> tabs, and this app's entry in <strong>Advanced
+tools</strong>.</p>
+<p>In Swagger, send policy values to
+<code>POST /apps/demo-status-page/policy</code> and test values to
+<code>POST /apps/demo-status-page/simulateMetrics</code>, using the JSON shapes in
+Example 1 with this app's values.</p>
+<h2 id="example-9-demo-landing">Example 9 — <code>demo-landing</code><a class="headerlink" href="#example-9-demo-landing" title="Permanent link">&para;</a></h2>
+<h3 id="register-this-application_8">Register this application<a class="headerlink" href="#register-this-application_8" title="Permanent link">&para;</a></h3>
+<p>Dashboard wizard values: name <code>demo-landing</code>, version <code>v1</code>, HTTP web
+application, image <code>nginx:alpine</code>, port <code>80</code>, CPU <code>100m</code>, memory <code>128Mi</code>,
+automatic scaling, minimum <code>1</code>, maximum <code>4</code>, requests/instance <code>90</code>, max
+latency <code>300</code> ms, health path <code>/</code>, health port <code>80</code>.</p>
+<p>Swagger operation: <strong>POST <code>/apps/register</code></strong>. Request body:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span><span class="p">,</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"App"</span><span class="p">,</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="nt">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-landing"</span><span class="p">,</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="nt">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">      </span><span class="nt">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-landing"</span><span class="p">,</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">  </span><span class="nt">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span><span class="p">,</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">    </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx:alpine"</span><span class="p">,</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">    </span><span class="nt">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HTTP"</span><span class="p">}],</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">    </span><span class="nt">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100m"</span><span class="p">,</span><span class="w"> </span><span class="nt">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128Mi"</span><span class="p">},</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">    </span><span class="nt">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">  </span><span class="nt">"scaling"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="w">    </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="w">    </span><span class="nt">"minReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="w">    </span><span class="nt">"maxReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="w">    </span><span class="nt">"targetRPSPerReplica"</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="w">    </span><span class="nt">"maxP95LatencyMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="w">    </span><span class="nt">"scaleOutThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="w">    </span><span class="nt">"scaleInThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="w">    </span><span class="nt">"windowSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a><span class="w">    </span><span class="nt">"cooldownSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="w">  </span><span class="nt">"healthCheck"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">}</span>
+<a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="operate-demo-landing">Operate <code>demo-landing</code><a class="headerlink" href="#operate-demo-landing" title="Permanent link">&para;</a></h3>
+<p>Use Example 1's procedure with <code>demo-landing</code>. Start with
+<code>POST /apps/demo-landing/up</code>, check status with
+<code>GET /apps/demo-landing/status</code>, and scale to <code>2</code> using
+<code>POST /apps/demo-landing/scale</code> with <code>{"replicas":2}</code>. Policy settings:
+minimum <code>1</code>, maximum <code>4</code>, target RPS <code>90</code>, max latency <code>300</code>, thresholds
+<code>80</code>/<code>30</code>. Simulate RPS <code>20</code>, latency <code>100</code>, connections <code>7</code>, CPU <code>24</code>,
+memory <code>40</code>, with <code>evaluate:false</code>.</p>
+<p>Read configuration, logs, and app metrics with
+<code>GET /apps/demo-landing/raw</code>, <code>GET /apps/demo-landing/logs?lines=100</code>, and
+<code>GET /apps/demo-landing/metrics</code>. Submit policy to
+<code>POST /apps/demo-landing/policy</code> using the policy JSON shape in Example 1
+with the values above. Submit simulated metrics to
+<code>POST /apps/demo-landing/simulateMetrics</code> with the values above. Stop with
+<code>POST /apps/demo-landing/down</code>; optionally delete with
+<code>DELETE /apps/demo-landing</code>. GET/stop/delete requests have no body.</p>
+<p>Dashboard: use this app's row <strong>Start/Stop</strong>, <strong>Details</strong> tabs, and
+<strong>Advanced tools</strong> policy/metrics forms.</p>
+<h2 id="example-10-demo-docs">Example 10 — <code>demo-docs</code><a class="headerlink" href="#example-10-demo-docs" title="Permanent link">&para;</a></h2>
+<h3 id="register-this-application_9">Register this application<a class="headerlink" href="#register-this-application_9" title="Permanent link">&para;</a></h3>
+<p>Dashboard wizard values: name <code>demo-docs</code>, version <code>v1</code>, HTTP web application,
+image <code>nginx:alpine</code>, port <code>80</code>, CPU <code>100m</code>, memory <code>128Mi</code>, automatic
+scaling, minimum <code>1</code>, maximum <code>3</code>, requests/instance <code>55</code>, max latency <code>260</code>
+ms, health path <code>/</code>, health port <code>80</code>.</p>
+<p>Swagger operation: <strong>POST <code>/apps/register</code></strong>. Request body:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"App"</span><span class="p">,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="nt">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-docs"</span><span class="p">,</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="nt">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">      </span><span class="nt">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo-docs"</span><span class="p">,</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">  </span><span class="nt">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span><span class="p">,</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx:alpine"</span><span class="p">,</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">    </span><span class="nt">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HTTP"</span><span class="p">}],</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">    </span><span class="nt">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100m"</span><span class="p">,</span><span class="w"> </span><span class="nt">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128Mi"</span><span class="p">},</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">    </span><span class="nt">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">  </span><span class="nt">"scaling"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">    </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">    </span><span class="nt">"minReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">    </span><span class="nt">"maxReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">    </span><span class="nt">"targetRPSPerReplica"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">    </span><span class="nt">"maxP95LatencyMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">260</span><span class="p">,</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">    </span><span class="nt">"scaleOutThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="w">    </span><span class="nt">"scaleInThresholdPct"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="w">    </span><span class="nt">"windowSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="w">    </span><span class="nt">"cooldownSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="w">  </span><span class="nt">"healthCheck"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">}</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="operate-demo-docs">Operate <code>demo-docs</code><a class="headerlink" href="#operate-demo-docs" title="Permanent link">&para;</a></h3>
+<p>Use Example 1's procedure, substituting <code>demo-docs</code>. Start with
+<code>POST /apps/demo-docs/up</code>; check <code>GET /apps/demo-docs/status</code>. Scale to <code>2</code>
+using <code>POST /apps/demo-docs/scale</code> with <code>{"replicas":2}</code>. Set policy minimum
+<code>1</code>, maximum <code>3</code>, target RPS <code>55</code>, max latency <code>260</code>, thresholds <code>80</code>/<code>30</code>.
+Submit safe test values RPS <code>9</code>, latency <code>75</code>, connections <code>3</code>, CPU <code>18</code>,
+memory <code>32</code>, with <code>evaluate:false</code>.</p>
+<p>Inspect with <code>GET /apps/demo-docs/raw</code>, <code>GET /apps/demo-docs/logs?lines=100</code>,
+and <code>GET /apps/demo-docs/metrics</code>. Update policy using
+<code>POST /apps/demo-docs/policy</code> and the policy JSON shape from Example 1 with
+the values above. Submit test metrics using
+<code>POST /apps/demo-docs/simulateMetrics</code> with the values above. Stop using
+<code>POST /apps/demo-docs/down</code>; optionally delete using
+<code>DELETE /apps/demo-docs</code>. Reads, stop, and delete have no request body.
+Dashboard: use this app's row controls, <strong>Details</strong> tabs, and select it in
+<strong>Advanced tools</strong>.</p>
+<h2 id="operations-shared-by-all-ten-applications">Operations shared by all ten applications<a class="headerlink" href="#operations-shared-by-all-ten-applications" title="Permanent link">&para;</a></h2>
+<p>These routes are not tied to a single app and are useful before or after
+trying any of the ten:</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Dashboard</th>
+<th>Swagger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List apps</td>
+<td><strong>Applications</strong></td>
+<td><code>GET /apps</code></td>
+</tr>
+<tr>
+<td>System-wide metrics</td>
+<td><strong>Metrics</strong></td>
+<td><code>GET /metrics</code></td>
+</tr>
+<tr>
+<td>Recent events for one sample</td>
+<td><strong>Events</strong>, filter by its exact app name</td>
+<td><code>GET /events?app=APP_NAME&amp;limit=25</code> (replace <code>APP_NAME</code>)</td>
+</tr>
+<tr>
+<td>Cluster status</td>
+<td><strong>Cluster</strong> page</td>
+<td><code>GET /cluster/status</code></td>
+</tr>
+<tr>
+<td>Cluster leader</td>
+<td><strong>Cluster</strong> page</td>
+<td><code>GET /cluster/leader</code></td>
+</tr>
+<tr>
+<td>Cluster health</td>
+<td>Dashboard health panel or <strong>Cluster</strong> page</td>
+<td><code>GET /cluster/health</code></td>
+</tr>
+</tbody>
+</table>
+<p>The read-only routes above do not need request bodies. Cluster status/leader
+responses depend on cluster configuration; an unavailable leader or disabled
+clustering may be reported by the API.</p>
+<h2 id="does-the-same-json-and-procedure-work-in-docs">Does the same JSON and procedure work in <code>/docs</code>?<a class="headerlink" href="#does-the-same-json-and-procedure-work-in-docs" title="Permanent link">&para;</a></h2>
+<p><strong>Yes.</strong> The Dashboard and Swagger send requests to the same Orchestry API.
+For registration, paste the chosen application's complete JSON into
+<strong>POST <code>/apps/register</code></strong> in Swagger. For the other operations, follow that
+application's named paths and bodies above. In the Dashboard, use the guided
+registration wizard, app row actions, <strong>Details</strong> tabs, and <strong>Advanced tools</strong>.
+Responses reflect live controller and Docker state, so the exact values can
+differ from the examples.</p>
+<h2 id="operation-coverage">Operation coverage<a class="headerlink" href="#operation-coverage" title="Permanent link">&para;</a></h2>
+<p>For any one of the ten apps, the procedure covers register, start, status,
+manual scale, scaling policy, raw configuration, logs, app metrics, simulated
+metrics, stop, and optional delete. The shared section covers list apps,
+system metrics, events, cluster status, leader, and health. Together these
+are the 17 user-facing operations. The controller also exposes <code>/health</code> and
+<code>/lb-health</code> technical probes in Swagger; they are not app-management actions.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/admincodes7/Orchestry" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
