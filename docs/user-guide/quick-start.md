@@ -67,6 +67,28 @@ orchestry --help
 
 ## Verification
 
+### Open the Orchestry web interface
+
+After starting the controller, open the New Dashboard:
+
+```text
+http://localhost:8000/dashboard
+```
+
+The dashboard provides guided application registration, app status and actions, cluster information, events, metrics, and advanced testing tools. It uses the existing controller API; it does not create a separate set of application-management logic.
+
+To use the technical Swagger explorer, select **Classic API Docs** in the dashboard or open:
+
+```text
+http://localhost:8000/classic-api-docs
+```
+
+The wrapper includes a **New Dashboard** link. The original Swagger URL remains available directly at `http://localhost:8000/docs`. For a controller bound to another port, replace `8000` with that controller's port.
+
+For hands-on walkthroughs of app registration, scaling, monitoring, cluster
+status, and cleanup in both interfaces, see the
+[Dashboard and Swagger examples](dashboard-and-swagger-examples.md).
+
 ### Single Node Setup
 
 Check that all services are running:

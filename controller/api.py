@@ -1,9 +1,12 @@
 import logging
 import time
+from pathlib import Path
 from typing import Optional
 import docker
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from functools import wraps
 from dotenv import load_dotenv
 
@@ -46,9 +49,14 @@ def leader_required(f):
 
 # FastAPI app
 app = FastAPI(
-    title="Orchestry Controller API",
+    title="Autrix Controller API",
     description="Autoscaling controller API",
-    version="1.0.0"
+    version="1.0.0",
+    openapi_tags=[
+        {"name": "Apps", "description": "Application lifecycle, status, and scaling operations."},
+        {"name": "Cluster", "description": "Cluster membership, leader election, and health status."},
+        {"name": "Monitoring", "description": "Metrics, events, and health summaries for operators."},
+    ]
 )
 
 app.add_middleware(
@@ -534,7 +542,7 @@ async def get_system_metrics():
 async def get_events(app: Optional[str] = None, limit: int = 100):
     """Get recent events."""
     try:
-        events = get_state_store().get_events(app, limit)
+        events = get_state_store().get_events(app_name=app, limit=limit)
         return {"events": events}
         
     except Exception as e:
@@ -569,7 +577,7 @@ async def get_cluster_leader():
         logger.error(f"Failed to get cluster leader: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/cluster/health")
+@app.get("/cluster/health", tags=["Cluster"])
 async def cluster_health_check():
     """Cluster-aware health check that includes leadership status."""
     if not get_cluster_controller():
@@ -606,7 +614,17 @@ async def cluster_health_check():
             "version": "1.0.0"
         }
 
-@app.get("/health")
+@app.get("/lb-health", summary="Load balancer health check")
+async def lb_health_check():
+    """Load balancer health check endpoint used by the NGINX ingress layer."""
+    return {
+        "status": "healthy",
+        "service": "Orchestry Controller Load Balancer",
+        "timestamp": time.time(),
+        "version": "1.0.0"
+    }
+
+@app.get("/health", summary="Node health check")
 async def health_check():
     """Health check endpoint."""
     return {
@@ -615,7 +633,20 @@ async def health_check():
         "version": "1.0.0"
     }
 
+dashboard_dir = Path(__file__).resolve().parent / "dashboard"
+app.mount("/dashboard-assets", StaticFiles(directory=dashboard_dir), name="dashboard-assets")
+
+@app.get("/", include_in_schema=False)
+@app.get("/dashboard", include_in_schema=False)
+async def dashboard_home():
+    """Serve the beginner-friendly Orchestry dashboard."""
+    return FileResponse(dashboard_dir / "index.html")
+
+@app.get("/classic-api-docs", include_in_schema=False)
+async def classic_api_docs():
+    """Serve a switchable wrapper around the existing Swagger UI."""
+    return FileResponse(dashboard_dir / "classic-api-docs.html")
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
-

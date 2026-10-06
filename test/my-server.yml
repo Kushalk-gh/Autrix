@@ -7,9 +7,9 @@ metadata:
     version: "v1"
 spec:
   type: http
-  image: "testing:latest"
+  image: "nginx:latest"
   ports:
-    - containerPort: 9010
+    - containerPort: 80
       protocol: HTTP
   resources:
     cpu: "100m"
@@ -24,6 +24,6 @@ scaling:
   scaleInThresholdPct: 60
 healthCheck:
   path: "/"
-  port: 9010
+  port: 80
   initialDelaySeconds: 5
   periodSeconds: 10

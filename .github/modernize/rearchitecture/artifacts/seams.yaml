@@ -1,0 +1,9 @@
+seams:
+  - id: controller/api.py:48
+    description: "Add a browser dashboard alongside (not instead of) the existing REST API and FastAPI-generated Swagger UI."
+    source: declared
+    cut_between:
+      migrated_side: "dashboard-addition (not present in source)"
+      frozen_side: controller-api-surface
+    protocol_shift: null
+    frozen_side_rule: "The existing API methods, paths, request/response behavior, and FastAPI-generated /docs surface MUST remain available and MUST NOT be refactored as part of the additive dashboard work."

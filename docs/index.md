@@ -10,6 +10,7 @@ Welcome to Orchestry - A lightweight container orchestration and auto-scaling pl
 - [Application Specification](user-guide/app-spec.md) - How to define your applications
 - [Configuration Guide](user-guide/configuration.md) - Environment and scaling configuration
 - [REST API Reference](user-guide/api-reference.md) - HTTP API endpoints and usage
+- [Dashboard and Swagger Examples](user-guide/dashboard-and-swagger-examples.md) - Ten guided examples covering all 17 user-facing API operations
 - [Troubleshooting](user-guide/troubleshooting.md) - Common issues and solutions
 
 ### For Developers
@@ -55,6 +56,8 @@ Orchestry is a container orchestration platform that provides:
 
 - [Installation](user-guide/quick-start.md#installation)
 - [Your First Application](user-guide/quick-start.md#deploying-your-first-app)
+- [New Dashboard](http://localhost:8000/dashboard) - Manage Orchestry with a guided interface
+- [Classic API Docs](http://localhost:8000/classic-api-docs) - Switchable Swagger API explorer
 - [CLI Commands](user-guide/cli-reference.md)
 - [API Endpoints](user-guide/api-reference.md)
 - [Architecture](developer-guide/architecture.md)

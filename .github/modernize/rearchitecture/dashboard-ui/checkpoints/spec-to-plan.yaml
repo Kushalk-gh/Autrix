@@ -1,0 +1,237 @@
+# Spec-to-Plan Traceability Checkpoint
+metadata:
+  generated: "2026-10-04"
+  source_spec: ".github/modernize/rearchitecture/dashboard-ui/spec.md"
+  target_plan: ".github/modernize/rearchitecture/dashboard-ui/plan.md"
+
+summary:
+  total_requirements: 14
+  covered_requirements: 14
+  missing_requirements: 0
+  coverage_percentage: 100.0
+
+requirements:
+  - req_id: "REQ-001"
+    req_description: "Provide the New Dashboard and a visible Classic API Docs switch."
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-1/Phase-2"
+      phase_name: "Foundation and Switch Navigation"
+      items:
+        - item_id: "1.2"
+          description: "Add explicit dashboard and Classic Docs page routes."
+        - item_id: "2.1"
+          description: "Create responsive dashboard shell and navigation."
+        - item_id: "2.2"
+          description: "Create Classic API Docs wrapper."
+    notes: ""
+  - req_id: "REQ-002"
+    req_description: "Keep Classic API Docs and current API contracts available."
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-1/Phase-2/Phase-5"
+      phase_name: "Foundation, Switch Navigation, Verification"
+      items:
+        - item_id: "1.1"
+          description: "Confirm live OpenAPI parity."
+        - item_id: "1.2"
+          description: "Add page routes without shadowing existing endpoints."
+        - item_id: "2.2"
+          description: "Embed the existing /docs UI."
+        - item_id: "5.1"
+          description: "Test routes and contract preservation."
+    notes: ""
+  - req_id: "REQ-003"
+    req_description: "Provide visible return navigation from Classic Docs."
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-1/Phase-2"
+      phase_name: "Foundation and Switch Navigation"
+      items:
+        - item_id: "1.2"
+          description: "Add explicit Classic Docs wrapper route."
+        - item_id: "2.1"
+          description: "Add API Docs navigation link."
+        - item_id: "2.2"
+          description: "Add return navigation around embedded /docs."
+    notes: ""
+  - req_id: "REQ-004"
+    req_description: "Expose every documented user-facing operation in the dashboard."
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-1/Phase-2/Phase-3/Phase-4/Phase-5"
+      phase_name: "All feature phases"
+      items:
+        - item_id: "1.1"
+          description: "Reconcile running OpenAPI inventory."
+        - item_id: "2.3"
+          description: "Implement common request layer."
+        - item_id: "3.3"
+          description: "Wire lifecycle and scaling."
+        - item_id: "4.3"
+          description: "Wire simulated metrics."
+        - item_id: "5.1"
+          description: "Test API method/path/request parity."
+        - item_id: "5.2"
+          description: "Exercise complete browser workflows."
+    notes: "All operation mappings are enumerated in plan.md."
+  - req_id: "REQ-005"
+    req_description: "Show app list/status with readable request states."
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-2/Phase-3"
+      phase_name: "Switch Navigation and Core Dashboard"
+      items:
+        - item_id: "2.3"
+          description: "Implement common states."
+        - item_id: "3.1"
+          description: "Build app list and dashboard summary."
+        - item_id: "3.2"
+          description: "Build cluster/event panels."
+    notes: ""
+  - req_id: "REQ-006"
+    req_description: "Provide a guided registration form with review and validation."
+    priority: "P2"
+    plan_mapping:
+      phase: "Phase-4"
+      phase_name: "Guided Creation and Diagnostics"
+      items:
+        - item_id: "4.1"
+          description: "Build AppSpec wizard."
+    notes: ""
+  - req_id: "REQ-007"
+    req_description: "Provide all application lifecycle, scaling, details, diagnostics, and simulation operations."
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-3/Phase-4"
+      phase_name: "Core Dashboard and Diagnostics"
+      items:
+        - item_id: "3.1"
+          description: "Build app list."
+        - item_id: "3.3"
+          description: "Wire lifecycle and scaling controls."
+        - item_id: "4.2"
+          description: "Build details, raw spec, logs, and metrics."
+        - item_id: "4.3"
+          description: "Expose simulated metrics."
+    notes: ""
+  - req_id: "REQ-008"
+    req_description: "Show global metrics, events, and cluster health/status/leader."
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-3"
+      phase_name: "Core Dashboard and Operation Parity"
+      items:
+        - item_id: "3.2"
+          description: "Build cluster overview and event views."
+    notes: ""
+  - req_id: "REQ-009"
+    req_description: "Preserve API semantics and display actual success/error outcomes."
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-2/Phase-3/Phase-4/Phase-5"
+      phase_name: "All API-integrated phases"
+      items:
+        - item_id: "2.3"
+          description: "Implement API client and error states."
+        - item_id: "3.2"
+          description: "Handle cluster/API errors."
+        - item_id: "3.3"
+          description: "Handle mutation outcomes."
+        - item_id: "4.1"
+          description: "Submit exact AppSpec."
+        - item_id: "4.2"
+          description: "Handle diagnostic response cases."
+        - item_id: "4.3"
+          description: "Handle simulation outcomes."
+        - item_id: "5.1"
+          description: "Test contracts and error bodies."
+        - item_id: "5.2"
+          description: "Test browser success/error flows."
+    notes: ""
+  - req_id: "REQ-010"
+    req_description: "Confirm disruptive application actions."
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-3"
+      phase_name: "Core Dashboard and Operation Parity"
+      items:
+        - item_id: "3.3"
+          description: "Add stop/delete confirmation."
+    notes: ""
+  - req_id: "REQ-011"
+    req_description: "Keep advanced and testing functions discoverable and explained."
+    priority: "P2"
+    plan_mapping:
+      phase: "Phase-2/Phase-4/Phase-5"
+      phase_name: "UI Foundation and Diagnostics"
+      items:
+        - item_id: "2.1"
+          description: "Add advanced navigation."
+        - item_id: "2.3"
+          description: "Handle raw technical outcomes."
+        - item_id: "4.2"
+          description: "Expose raw specification view."
+        - item_id: "4.3"
+          description: "Label metrics simulation as advanced/testing."
+        - item_id: "5.3"
+          description: "Document advanced options."
+    notes: ""
+  - req_id: "REQ-012"
+    req_description: "Make forms and navigation responsive and keyboard accessible."
+    priority: "P2"
+    plan_mapping:
+      phase: "Phase-2/Phase-4/Phase-5"
+      phase_name: "UI Foundation and Verification"
+      items:
+        - item_id: "2.1"
+          description: "Build accessible responsive shell."
+        - item_id: "4.1"
+          description: "Provide labeled guided form."
+        - item_id: "5.2"
+          description: "Run keyboard and viewport tests."
+    notes: ""
+  - req_id: "REQ-013"
+    req_description: "Show only information supported by the existing API."
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-2/Phase-4"
+      phase_name: "API Client and Diagnostic Views"
+      items:
+        - item_id: "2.3"
+          description: "Use actual API responses."
+        - item_id: "4.1"
+          description: "Build fields from AppSpec contract."
+        - item_id: "4.2"
+          description: "Render observed API details."
+        - item_id: "4.3"
+          description: "Distinguish simulated measurements."
+    notes: ""
+  - req_id: "REQ-014"
+    req_description: "Keep health probes and all additional documented paths available in Classic Docs."
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-1/Phase-2/Phase-5"
+      phase_name: "Parity, Classic Docs, and Verification"
+      items:
+        - item_id: "1.1"
+          description: "Compare running OpenAPI to source inventory."
+        - item_id: "1.2"
+          description: "Preserve existing docs/API routes."
+        - item_id: "2.2"
+          description: "Embed unmodified /docs UI."
+        - item_id: "5.1"
+          description: "Test docs and probe route availability."
+        - item_id: "5.3"
+          description: "Document verified inventory."
+    notes: ""
+
+missing_requirements: []
+orphan_plan_items: []
+
+validation:
+  passed: true
+  errors: []
+  warnings:
+    - "Live OpenAPI parity remains to be verified when the existing controller is running."
+    - "No project constitution file was found."

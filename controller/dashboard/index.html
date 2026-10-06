@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10243a">
+  <title>Orchestry | Dashboard</title>
+  <link rel="stylesheet" href="/dashboard-assets/styles.css">
+  <script src="/dashboard-assets/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#/dashboard" aria-label="Orchestry dashboard home">
+        <span class="brand-mark" aria-hidden="true">O</span>
+        <span>Orchestry</span>
+      </a>
+      <nav class="side-nav">
+        <a href="#/dashboard" data-nav="dashboard"><span aria-hidden="true">⌂</span> Dashboard</a>
+        <a href="#/apps" data-nav="apps"><span aria-hidden="true">▦</span> Applications</a>
+        <a href="#/cluster" data-nav="cluster"><span aria-hidden="true">◉</span> Cluster</a>
+        <a href="#/metrics" data-nav="metrics"><span aria-hidden="true">⌁</span> Metrics</a>
+        <a href="#/events" data-nav="events"><span aria-hidden="true">◷</span> Events</a>
+        <a href="#/advanced" data-nav="advanced"><span aria-hidden="true">⚙</span> Advanced tools</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <p class="sidebar-caption">Prefer the technical view?</p>
+        <a class="sidebar-docs" href="/classic-api-docs">Classic API Docs <span aria-hidden="true">↗</span></a>
+        <span class="sidebar-version">Orchestry Controller</span>
+      </div>
+    </aside>
+
+    <div class="main-column">
+      <header class="topbar">
+        <div class="breadcrumb" id="page-breadcrumb">Dashboard</div>
+        <div class="topbar-actions">
+          <span class="connection-indicator"><span class="status-dot" aria-hidden="true"></span> API-connected view</span>
+          <a class="button button-small button-outline" href="/classic-api-docs">Classic API Docs</a>
+        </div>
+      </header>
+      <main id="main-content" class="content" tabindex="-1" aria-live="polite"></main>
+    </div>
+  </div>
+  <div id="toast-region" class="toast-region" aria-live="assertive" aria-atomic="true"></div>
+</body>
+</html>

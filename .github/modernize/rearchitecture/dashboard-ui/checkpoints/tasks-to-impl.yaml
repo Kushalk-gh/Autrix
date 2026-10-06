@@ -1,0 +1,434 @@
+metadata:
+  generated: "2026-10-04"
+  source_tasks: ".github/modernize/rearchitecture/dashboard-ui/plan.md#implementation-tasks"
+  last_updated: "2026-10-04"
+
+summary:
+  total_tasks: 14
+  completed_tasks: 14
+  in_progress_tasks: 0
+  pending_tasks: 0
+  completion_percentage: 100.0
+
+tasks:
+  - task_id: "T001"
+    description: "Compare live OpenAPI with the 17+2 source inventory."
+    status: "completed"
+    implementation:
+      files_changed:
+        - file: ".github/modernize/rearchitecture/dashboard-ui/plan.md"
+          changes:
+            - line_start: 1
+              line_end: 1
+              change_type: "modified"
+              description: "Recorded 19-operation live OpenAPI parity."
+    verification:
+      build_passed: true
+      test_results:
+        command: "GET /openapi.json at http://127.0.0.1:8765"
+        passed: 1
+        failed: 0
+        skipped: 0
+        failures: []
+      notes: "All 17 user-facing paths and both health probes match."
+    upstream_trace:
+      plan_item: "1.1"
+      requirements: ["REQ-002", "REQ-004", "REQ-014"]
+      full_trace: "REQ-002,REQ-004,REQ-014 -> Phase-1.1 -> T001 -> live OpenAPI parity."
+  - task_id: "T002"
+    description: "Add explicit page and assets handlers while preserving APIs."
+    status: "completed"
+    implementation:
+      files_changed:
+        - file: "controller/api.py"
+          changes:
+            - line_start: 633
+              line_end: 647
+              change_type: "added"
+              description: "Mounted static assets and served dashboard/docs HTML."
+    verification:
+      build_passed: true
+      test_results:
+        command: "HTTP probes for dashboard routes, assets, docs, and schema"
+        passed: 7
+        failed: 0
+        skipped: 0
+        failures: []
+      notes: "All probed URLs returned 200."
+    upstream_trace:
+      plan_item: "1.2"
+      requirements: ["REQ-001", "REQ-002", "REQ-003", "REQ-014"]
+      full_trace: "REQ-001,REQ-002,REQ-003,REQ-014 -> Phase-1.2 -> T002 -> controller/api.py"
+  - task_id: "T003"
+    description: "Create accessible dashboard shell and navigation."
+    status: "completed"
+    implementation:
+      files_changed:
+        - file: "controller/dashboard/index.html"
+          changes:
+            - line_start: 1
+              line_end: 44
+              change_type: "added"
+              description: "Added dashboard shell, navigation, and switch link."
+        - file: "controller/dashboard/styles.css"
+          changes:
+            - line_start: 1
+              line_end: 1
+              change_type: "added"
+              description: "Added responsive dashboard styles and visible focus states."
+    verification:
+      build_passed: true
+      test_results:
+        command: "Playwright browser E2E"
+        passed: 1
+        failed: 0
+        skipped: 0
+        failures: []
+      notes: "Dashboard rendered in Chromium and narrow viewport passed."
+    upstream_trace:
+      plan_item: "2.1"
+      requirements: ["REQ-001", "REQ-003", "REQ-012"]
+      full_trace: "REQ-001,REQ-003,REQ-012 -> Phase-2.1 -> T003 -> dashboard shell and styles"
+  - task_id: "T004"
+    description: "Embed /docs with visible return link."
+    status: "completed"
+    implementation:
+      files_changed:
+        - file: "controller/dashboard/classic-api-docs.html"
+          changes:
+            - line_start: 1
+              line_end: 21
+              change_type: "added"
+              description: "Embedded Swagger UI and added dashboard navigation."
+    verification:
+      build_passed: true
+      test_results:
+        command: "Playwright dashboard/docs switching journey"
+        passed: 1
+        failed: 0
+        skipped: 0
+        failures: []
+      notes: "Swagger UI rendered inside the wrapper."
+    upstream_trace:
+      plan_item: "2.2"
+      requirements: ["REQ-002", "REQ-003", "REQ-004", "REQ-014"]
+      full_trace: "REQ-002,REQ-003,REQ-004,REQ-014 -> Phase-2.2 -> T004 -> wrapper"
+  - task_id: "T005"
+    description: "Implement same-origin request and response-state helpers."
+    status: "completed"
+    implementation:
+      files_changed:
+        - file: "controller/dashboard/app.js"
+          changes:
+            - line_start: 1
+              line_end: 1
+              change_type: "added"
+              description: "Added centralized API requests, encoding, and error handling."
+    verification:
+      build_passed: true
+      test_results:
+        command: "node --check controller/dashboard/app.js and Python mapping tests"
+        passed: 1
+        failed: 0
+        skipped: 0
+        failures: []
+      notes: "API error states display server details without success-shaped fallbacks."
+    upstream_trace:
+      plan_item: "2.3"
+      requirements: ["REQ-004", "REQ-005", "REQ-009", "REQ-011", "REQ-013"]
+      full_trace: "REQ-004,REQ-005,REQ-009,REQ-011,REQ-013 -> Phase-2.3 -> T005 -> API client"
+  - task_id: "T006"
+    description: "Build app, cluster, metrics, and event panels."
+    status: "completed"
+    implementation:
+      files_changed:
+        - file: "controller/dashboard/app.js"
+          changes:
+            - line_start: 150
+              line_end: 301
+              change_type: "added"
+              description: "Added app overview, cluster, metrics, and event views."
+    verification:
+      build_passed: true
+      test_results:
+        command: "Python operation mapping tests and Playwright diagnostics journey"
+        passed: 1
+        failed: 0
+        skipped: 0
+        failures: []
+      notes: "Browser API responses were intercepted."
+    upstream_trace:
+      plan_item: "3.1, 3.2"
+      requirements: ["REQ-005", "REQ-007", "REQ-008", "REQ-009"]
+      full_trace: "REQ-005,REQ-007,REQ-008,REQ-009 -> Phase-3 -> T006 -> dashboard views"
+  - task_id: "T007"
+    description: "Wire lifecycle, scaling, and policy requests."
+    status: "completed"
+    implementation:
+      files_changed:
+        - file: "controller/dashboard/app.js"
+          changes:
+            - line_start: 470
+              line_end: 555
+              change_type: "added"
+              description: "Added confirmed app actions and scaling forms."
+    verification:
+      build_passed: true
+      test_results:
+        command: "Playwright app-management journey"
+        passed: 1
+        failed: 0
+        skipped: 0
+        failures: []
+      notes: "Lifecycle request used an intercepted controller response."
+    upstream_trace:
+      plan_item: "3.3"
+      requirements: ["REQ-007", "REQ-009", "REQ-010"]
+      full_trace: "REQ-007,REQ-009,REQ-010 -> Phase-3.3 -> T007 -> app actions"
+  - task_id: "T008"
+    description: "Implement the AppSpec registration wizard."
+    status: "completed"
+    implementation:
+      files_changed:
+        - file: "controller/dashboard/app.js"
+          changes:
+            - line_start: 308
+              line_end: 365
+              change_type: "added"
+              description: "Added generated AppSpec payload and five-step wizard."
+    verification:
+      build_passed: true
+      test_results:
+        command: "Python AppSpec test and Playwright registration journey"
+        passed: 2
+        failed: 0
+        skipped: 0
+        failures: []
+      notes: "Request shape matches the Pydantic AppSpec model."
+    upstream_trace:
+      plan_item: "4.1"
+      requirements: ["REQ-006", "REQ-009", "REQ-012", "REQ-013"]
+      full_trace: "REQ-006,REQ-009,REQ-012,REQ-013 -> Phase-4.1 -> T008 -> wizard"
+  - task_id: "T009"
+    description: "Add application detail and diagnostic views."
+    status: "completed"
+    implementation:
+      files_changed:
+        - file: "controller/dashboard/app.js"
+          changes:
+            - line_start: 210
+              line_end: 249
+              change_type: "added"
+              description: "Added status, metrics, logs, raw spec, and events sections."
+    verification:
+      build_passed: true
+      test_results:
+        command: "Playwright diagnostics journey"
+        passed: 1
+        failed: 0
+        skipped: 0
+        failures: []
+      notes: "API responses were intercepted; real DB-backed data remains unverified."
+    upstream_trace:
+      plan_item: "4.2"
+      requirements: ["REQ-007", "REQ-009", "REQ-011", "REQ-013"]
+      full_trace: "REQ-007,REQ-009,REQ-011,REQ-013 -> Phase-4.2 -> T009 -> app detail"
+  - task_id: "T010"
+    description: "Add advanced simulated-metrics form."
+    status: "completed"
+    implementation:
+      files_changed:
+        - file: "controller/dashboard/app.js"
+          changes:
+            - line_start: 414
+              line_end: 435
+              change_type: "added"
+              description: "Added simulation form and advanced-use explanation."
+    verification:
+      build_passed: true
+      test_results:
+        command: "Python simulation model and dashboard field mapping tests"
+        passed: 1
+        failed: 0
+        skipped: 0
+        failures: []
+      notes: "Real scaling evaluation side effects were not run."
+    upstream_trace:
+      plan_item: "4.3"
+      requirements: ["REQ-004", "REQ-007", "REQ-009", "REQ-011", "REQ-013"]
+      full_trace: "REQ-004,REQ-007,REQ-009,REQ-011,REQ-013 -> Phase-4.3 -> T010"
+  - task_id: "T011"
+    description: "Add Python route and operation contract tests."
+    status: "completed"
+    implementation:
+      files_changed:
+        - file: "tests/test_dashboard_routes.py"
+          changes:
+            - line_start: 1
+              line_end: 109
+              change_type: "added"
+              description: "Added route, static mount, operation inventory, and wrapper tests."
+        - file: "tests/test_dashboard_operations.py"
+          changes:
+            - line_start: 1
+              line_end: 89
+              change_type: "added"
+              description: "Added operation mapping and Pydantic model contract tests."
+    verification:
+      build_passed: true
+      test_results:
+        command: "python -m unittest tests.test_dashboard_routes tests.test_dashboard_operations -v"
+        passed: 10
+        failed: 0
+        skipped: 0
+        failures: []
+      notes: "Unittest does not require the unavailable httpx/TestClient dependency."
+    upstream_trace:
+      plan_item: "5.1"
+      requirements: ["REQ-001", "REQ-002", "REQ-004", "REQ-007", "REQ-008", "REQ-009", "REQ-014"]
+      full_trace: "REQ-001,REQ-002,REQ-004,REQ-007,REQ-008,REQ-009,REQ-014 -> Phase-5.1 -> T011"
+  - task_id: "T012"
+    description: "Add isolated Compose override and Playwright journeys."
+    status: "completed"
+    implementation:
+      files_changed:
+        - file: "e2e/dashboard-navigation.spec.js"
+          changes:
+            - line_start: 1
+              line_end: 18
+              change_type: "added"
+              description: "Added dashboard and Swagger switch test."
+        - file: "e2e/application-management.spec.js"
+          changes:
+            - line_start: 1
+              line_end: 56
+              change_type: "added"
+              description: "Added registration, mocked read-back, and lifecycle browser test."
+        - file: "e2e/application-diagnostics.spec.js"
+          changes:
+            - line_start: 1
+              line_end: 44
+              change_type: "added"
+              description: "Added diagnostics, error, keyboard, and responsive browser test."
+        - file: "e2e/application-live-backend.integration.spec.js"
+          changes:
+            - line_start: 1
+              line_end: 25
+              change_type: "added"
+              description: "Added real API/database dashboard registration and deletion browser flow."
+        - file: "test/dashboard-compose.override.yml"
+          changes:
+            - line_start: 1
+              line_end: 29
+              change_type: "added"
+              description: "Added isolated test-only PostgreSQL and nginx Compose services."
+    verification:
+      build_passed: true
+      test_results:
+        command: "npm run build && npm test && npm run test:integration (from e2e/)"
+        passed: 4
+        failed: 0
+        skipped: 0
+        failures: []
+      notes: "Three isolated UI flows and one live PostgreSQL-backed browser flow pass."
+    upstream_trace:
+      plan_item: "5.2"
+      requirements: ["REQ-001", "REQ-002", "REQ-003", "REQ-004", "REQ-005", "REQ-006", "REQ-007", "REQ-008", "REQ-009", "REQ-010", "REQ-011", "REQ-012", "REQ-013", "REQ-014"]
+      full_trace: "REQ-001..REQ-014 -> Phase-5.2 -> T012 -> E2E"
+  - task_id: "T013"
+    description: "Run Python, Playwright, and Docker-backed validation."
+    status: "completed"
+    implementation:
+      files_changed:
+        - file: ".github/modernize/rearchitecture/dashboard-ui/runtime-validation-report.md"
+          changes:
+            - line_start: 1
+              line_end: 36
+              change_type: "added"
+              description: "Recorded passed route and browser checks plus remaining integration gap."
+        - file: "tests/test_dashboard_api_integration.py"
+          changes:
+            - line_start: 1
+              line_end: 125
+              change_type: "added"
+              description: "Added real HTTP and persistence tests against the isolated PostgreSQL-backed controller."
+    verification:
+      build_passed: true
+      test_results:
+        command: "python -m unittest tests.test_dashboard_api_integration -v; npm run test:integration"
+        passed: 4
+        failed: 0
+        skipped: 0
+        failures: []
+      notes: "Three API/database tests and one live-browser integration passed; test-only Compose resources were shut down."
+    upstream_trace:
+      plan_item: "5.1, 5.2"
+      requirements: ["REQ-001", "REQ-002", "REQ-004", "REQ-007", "REQ-008", "REQ-009", "REQ-014"]
+      full_trace: "REQ-001,REQ-002,REQ-004,REQ-007,REQ-008,REQ-009,REQ-014 -> Phase-5 -> T013 -> validation report"
+  - task_id: "T014"
+    description: "Update user docs and operation inventory."
+    status: "completed"
+    implementation:
+      files_changed:
+        - file: "docs/index.md"
+          changes:
+            - line_start: 1
+              line_end: 1
+              change_type: "modified"
+              description: "Added dashboard and Classic Docs links."
+        - file: "docs/user-guide/quick-start.md"
+          changes:
+            - line_start: 1
+              line_end: 1
+              change_type: "modified"
+              description: "Documented both interfaces and switch."
+        - file: "docs/user-guide/api-reference.md"
+          changes:
+            - line_start: 1
+              line_end: 1
+              change_type: "modified"
+              description: "Replaced obsolete route examples with verified API inventory."
+    verification:
+      build_passed: true
+      test_results:
+        command: "Documentation review"
+        passed: 1
+        failed: 0
+        skipped: 0
+        failures: []
+      notes: "Documentation-only validation."
+    upstream_trace:
+      plan_item: "5.3"
+      requirements: ["REQ-001", "REQ-002", "REQ-004", "REQ-006", "REQ-011", "REQ-014"]
+      full_trace: "REQ-001,REQ-002,REQ-004,REQ-006,REQ-011,REQ-014 -> Phase-5.3 -> T014"
+
+pending_tasks: []
+untracked_changes: []
+traceability_chain:
+  - chain_id: "TRACE-001"
+    requirement: "REQ-001"
+    plan_phase: "Phase-2"
+    plan_item: "2.1, 2.2"
+    tasks: ["T003", "T004"]
+    files: ["controller/dashboard/index.html", "controller/dashboard/classic-api-docs.html"]
+    status: "complete"
+  - chain_id: "TRACE-002"
+    requirement: "REQ-004"
+    plan_phase: "Phase-1, Phase-3, Phase-4"
+    plan_item: "1.1, 2.3, 3.3, 4.3"
+    tasks: ["T001", "T005", "T007", "T010", "T011"]
+    files: ["controller/dashboard/app.js", "tests/test_dashboard_operations.py"]
+    status: "complete"
+  - chain_id: "TRACE-003"
+    requirement: "REQ-012"
+    plan_phase: "Phase-2, Phase-5"
+    plan_item: "2.1, 5.2"
+    tasks: ["T003", "T012"]
+    files: ["controller/dashboard/styles.css", "e2e/application-diagnostics.spec.js"]
+    status: "complete"
+validation:
+  passed: true
+  errors: []
+  warnings:
+    - "Live start and scaling side effects were deliberately not exercised because they can launch/change Docker workloads."
+  blocking_issues: []

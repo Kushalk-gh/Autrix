@@ -209,6 +209,34 @@ class AppManager:
             logger.error(f"Failed to register app: {e}")
             return {"error": str(e)}
 
+    def _ensure_image_available(self, image_name: str) -> str:
+        """Ensure a Docker image exists locally or pull it automatically."""
+        try:
+            self.client.images.get(image_name)
+            logger.info(f"Docker image already available: {image_name}")
+            return image_name
+        except docker.errors.ImageNotFound:
+            logger.warning(f"Docker image not found locally: {image_name}. Attempting pull...")
+            try:
+                self.client.images.pull(image_name)
+                logger.info(f"Successfully pulled Docker image: {image_name}")
+                return image_name
+            except Exception as pull_error:
+                if image_name == "testing:latest":
+                    fallback_image = "nginx:latest"
+                    logger.warning(
+                        "Sample image %s is unavailable; falling back to %s for local demo usage",
+                        image_name,
+                        fallback_image,
+                    )
+                    try:
+                        self.client.images.pull(fallback_image)
+                        logger.info(f"Successfully pulled fallback Docker image: {fallback_image}")
+                        return fallback_image
+                    except Exception:
+                        pass
+                raise RuntimeError(f"Unable to fetch Docker image '{image_name}': {pull_error}") from pull_error
+
     def start(self, app_name: str) -> dict:
         """Start the application containers."""
         try:
@@ -247,19 +275,53 @@ class AppManager:
                 scaling_config = app_spec.get("scaling", {})
                 min_replicas = scaling_config.get("minReplicas", 1)
                 logger.info(f"Ensuring minimum {min_replicas} replicas for {app_name} (adopted {adopted})")
+
+                # Clean up stale Docker containers from previous runs with the same app name so we do not
+                # keep retrying occupied replica names forever.
+                for container in self.docker_client.containers.list(all=True):
+                    if container.name.startswith(f"{app_name}-"):
+                        try:
+                            suffix = container.name.rsplit("-", 1)[-1]
+                            if suffix.isdigit():
+                                existing_indices.add(int(suffix))
+                            logger.warning(f"Removing stale container {container.name} for app {app_name}")
+                            if container.status != "running":
+                                container.remove(force=True)
+                        except Exception as e:
+                            logger.warning(f"Could not clean stale container {container.name}: {e}")
+
                 next_index = 0
                 started = 0
                 while len(self.instances.get(app_name, [])) < min_replicas:
                     # Find next unused index
                     while next_index in existing_indices:
                         next_index += 1
+
                     logger.info(f"Creating new container replica index {next_index} for {app_name}")
                     result = self._start_container(app_name, app_spec, next_index)
-                    if result:
-                        existing_indices.add(next_index)
-                        started += 1
+                    if not result:
+                        logger.warning(
+                            "Failed to start replica %s for app %s; stopping startup to avoid an endless retry loop",
+                            next_index,
+                            app_name,
+                        )
+                        break
+
+                    existing_indices.add(next_index)
+                    started += 1
                     next_index += 1
+
                 total = len(self.instances.get(app_name, []))
+                if total < min_replicas:
+                    app_record.status = 'error'
+                    app_record.updated_at = time.time()
+                    self.state_store.save_app(app_record)
+                    return {
+                        "error": f"Unable to reach minimum replicas for {app_name}: {total}/{min_replicas} started",
+                        "app": app_name,
+                        "replicas": total,
+                        "started": started,
+                    }
 
             # Update nginx configuration
             self._update_nginx_config(app_name)
@@ -275,10 +337,11 @@ class AppManager:
         """Start a single container instance."""
         try:
             container_port = app_spec["ports"][0]["containerPort"]
+            image_name = self._ensure_image_available(app_spec["image"])
 
             # Container configuration
             container_config = {
-                "image": app_spec["image"],
+                "image": image_name,
                 "name": f"{app_name}-{replica_index}",
                 "labels": {
                     "orchestry.app": app_name,
@@ -380,14 +443,6 @@ class AppManager:
                 if app_name not in self.instances:
                     return {"error": f"App {app_name} not found or not running"}
 
-                # Set status to stopped first
-                app_record = self.state_store.get_app(app_name)
-                if app_record:
-                    app_record.status = 'stopped'
-                    app_record.updated_at = time.time()
-                    app_record.replicas = 0
-                    self.state_store.save_app(app_record)
-
                 stopped_count = 0
                 for instance in self.instances[app_name]:
                     try:
@@ -401,7 +456,6 @@ class AppManager:
 
                     except Exception as e:
                         logger.warning(f"Failed to stop container {instance.container_id}: {e}")
-
                 # Clear instances
                 self.instances[app_name] = []
 
@@ -1271,6 +1325,3 @@ class AppManager:
             logger.info(f"Registered container {container.id[:12]} for health checking")
 
         self._update_nginx_config(app_name)
-
-
-

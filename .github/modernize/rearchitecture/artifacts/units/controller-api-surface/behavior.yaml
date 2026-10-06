@@ -1,0 +1,91 @@
+unit: controller-api-surface
+side_effects:
+  - source_loc: "controller/api.py:67"
+    effect: "FastAPI startup delegates component initialization to lifecycle.startup_event()."
+    must_preserve: true
+  - source_loc: "controller/api.py:72"
+    effect: "FastAPI shutdown delegates component cleanup to lifecycle.shutdown_event()."
+    must_preserve: true
+  - source_loc: "controller/api.py:96"
+    effect: "POST /apps/register registers the app, installs its scaling policy, and writes a registered event."
+    must_preserve: true
+  - source_loc: "controller/api.py:142"
+    effect: "POST /apps/{name}/up starts the app and writes a started event."
+    must_preserve: true
+  - source_loc: "controller/api.py:161"
+    effect: "POST /apps/{name}/down stops the app and writes a stopped event."
+    must_preserve: true
+  - source_loc: "controller/api.py:180"
+    effect: "DELETE /apps/{name} deletes the app and writes a deleted event."
+    must_preserve: true
+  - source_loc: "controller/api.py:221"
+    effect: "POST /apps/{name}/scale scales the app and writes scaling-history and manual_scale event records."
+    must_preserve: true
+  - source_loc: "controller/api.py:250"
+    effect: "POST /apps/{name}/policy replaces the in-memory scaling policy and writes a policy_updated event."
+    must_preserve: true
+  - source_loc: "controller/api.py:422"
+    effect: "POST /apps/{name}/simulateMetrics adds simulated metrics; when evaluation requests a successful scale, it records the scaling action and history."
+    must_preserve: true
+branches:
+  - source_loc: "controller/api.py:96"
+    condition: "Manager registration returns an error or metadata.name is absent."
+    behavior: "The handler raises a client-error HTTPException inside a broad exception handler; the response is consequently surfaced as HTTP 500 by that handler."
+    must_preserve: true
+  - source_loc: "controller/api.py:199"
+    condition: "The app manager reports an error."
+    behavior: "The handler attempts to raise 404, but its broad exception handler converts it to HTTP 500."
+    must_preserve: true
+  - source_loc: "controller/api.py:321"
+    condition: "The app has no tracked instances."
+    behavior: "The logs route returns the app name and an empty logs list."
+    must_preserve: true
+  - source_loc: "controller/api.py:422"
+    condition: "The app is not running."
+    behavior: "The handler raises 404 and re-raises HTTPException without converting it."
+    must_preserve: true
+  - source_loc: "controller/api.py:422"
+    condition: "Simulated metrics request has evaluate=true and the evaluation requests scaling."
+    behavior: "The handler attempts a scale and reports the evaluation plus either the scaling action or the manager's scaling error."
+    must_preserve: true
+  - source_loc: "controller/api.py:549"
+    condition: "Cluster controller is absent."
+    behavior: "Cluster status and leader routes return HTTP 503; cluster health instead returns a healthy response identifying clustering as disabled."
+    must_preserve: true
+  - source_loc: "controller/api.py:577"
+    condition: "Cluster health evaluation raises an exception."
+    behavior: "The route returns a JSON body with status unhealthy and clustering error; source does not set a non-200 response status."
+    must_preserve: true
+error_paths:
+  - source_loc: "controller/api.py:22"
+    trigger: "A leader-required operation reaches a non-leader controller or no leader is elected."
+    outcome: "HTTP 503; when a leader is known, detail and X-Current-Leader identify it."
+    contract: "HTTP 503 with JSON detail; optional X-Current-Leader header."
+    must_preserve: true
+  - source_loc: "controller/api.py:96"
+    trigger: "Request body fails FastAPI/Pydantic validation."
+    outcome: "Framework validation response before handler execution."
+    contract: "FastAPI request-validation response (normally HTTP 422); live OpenAPI/runtime response was not probed."
+    must_preserve: true
+  - source_loc: "controller/api.py:298"
+    trigger: "Requested app is absent from persistent state."
+    outcome: "HTTP 404 with detail; this handler explicitly re-raises HTTPException."
+    contract: "HTTP 404 JSON detail."
+    must_preserve: true
+  - source_loc: "controller/api.py:321"
+    trigger: "App is absent/not running or log collection raises an exception."
+    outcome: "The route raises/encounters an exception inside a broad catch and surfaces HTTP 500."
+    contract: "HTTP 500 JSON detail."
+    must_preserve: true
+  - source_loc: "controller/api.py:549"
+    trigger: "Cluster status/leader is requested when clustering is disabled."
+    outcome: "HTTP 503 with detail 'Clustering not enabled'."
+    contract: "HTTP 503 JSON detail."
+    must_preserve: true
+concurrency:
+  model: event-loop
+  tx_boundary:
+    source_loc: "controller/api.py:96"
+    scope: "Route handlers are async, but manager, Docker, and database operations are invoked inline. No transaction spans a complete handler; persistence and event/history writes are separate manager/state-store operations."
+    isolation: "The handler does not specify an isolation level; PostgreSQL transaction configuration is owned by state/db.py."
+    must_preserve: true

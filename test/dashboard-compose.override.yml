@@ -1,0 +1,30 @@
+name: orchestry-dashboard-e2e
+
+services:
+  dashboard-test-postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: orchestry_dashboard_test
+      POSTGRES_USER: orchestry_dashboard_test
+      POSTGRES_PASSWORD: dashboard_test_only
+    ports:
+      - "127.0.0.1:55432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U orchestry_dashboard_test -d orchestry_dashboard_test"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    labels:
+      orchestry.test: dashboard-e2e
+
+  dashboard-test-nginx:
+    image: nginx:alpine
+    container_name: orchestry-dashboard-e2e-nginx
+    healthcheck:
+      test: ["CMD", "nginx", "-t"]
+      interval: 2s
+      timeout: 3s
+      retries: 10
+    labels:
+      orchestry.test: dashboard-e2e
+
