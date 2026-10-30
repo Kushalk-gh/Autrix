@@ -1,0 +1,353 @@
+contracts:
+  - name: Register application
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:96"
+    contract:
+      method: "POST"
+      path: "/apps/register"
+      request: "AppSpec JSON: apiVersion, kind, metadata, spec; optional scaling and healthCheck."
+      response: "AppRegistrationResponse JSON: status, app, optional message."
+      error: "Request validation is handled by FastAPI (normally 422). The handler's intended 400 exceptions are caught by its broad except and surfaced as 500. Leader-required 503 is raised by the decorator before the handler."
+      auth: "No user-authentication mechanism is declared; leader_required applies only to controller leadership."
+    target_contract:
+      method: "POST /apps/register with AppSpec JSON; return AppRegistrationResponse on success."
+      notes: "Preserve the existing method, path, payload, and response for dashboard clients."
+    semantic_divergence: []
+  - name: Start application
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:142"
+    contract:
+      method: "POST"
+      path: "/apps/{name}/up"
+      request: "No body; name is a path parameter."
+      response: "JSON object returned by AppManager.start(name)."
+      error: "Manager errors raised as HTTPException inside the broad handler catch surface as HTTP 500; leader-required 503 is raised before handler execution."
+      auth: "No user authentication declared; leader_required checks controller leadership."
+    target_contract:
+      method: "POST /apps/{name}/up with no request body."
+      notes: "Keep path and manager-result behavior unchanged."
+    semantic_divergence: []
+  - name: Stop application
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:161"
+    contract:
+      method: "POST"
+      path: "/apps/{name}/down"
+      request: "No body; name is a path parameter."
+      response: "JSON object returned by AppManager.stop(name)."
+      error: "Manager errors raised as HTTPException inside the broad handler catch surface as HTTP 500; leader-required 503 is raised before handler execution."
+      auth: "No user authentication declared; leader_required checks controller leadership."
+    target_contract:
+      method: "POST /apps/{name}/down with no request body."
+      notes: "Keep path and manager-result behavior unchanged."
+    semantic_divergence: []
+  - name: Delete application
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:180"
+    contract:
+      method: "DELETE"
+      path: "/apps/{name}"
+      request: "No body; name is a path parameter."
+      response: "JSON object returned by AppManager.delete(name)."
+      error: "Manager errors raised as HTTPException inside the broad handler catch surface as HTTP 500; leader-required 503 is raised before handler execution."
+      auth: "No user authentication declared; leader_required checks controller leadership."
+    target_contract:
+      method: "DELETE /apps/{name} with no request body."
+      notes: "Keep path and manager-result behavior unchanged."
+    semantic_divergence: []
+  - name: Get application status
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:199"
+    contract:
+      method: "GET"
+      path: "/apps/{name}/status"
+      request: "No body; name is a path parameter."
+      response: "AppStatusResponse JSON: app, status, replicas, ready_replicas, instances, mode."
+      error: "The handler's intended 404 is caught by its broad except and surfaced as HTTP 500."
+      auth: "No authentication dependency declared."
+    target_contract:
+      method: "GET /apps/{name}/status -> AppStatusResponse."
+      notes: "Preserve response model and existing error behavior."
+    semantic_divergence: []
+  - name: Scale application
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:221"
+    contract:
+      method: "POST"
+      path: "/apps/{name}/scale"
+      request: "ScaleRequest JSON with integer replicas constrained to 0..100."
+      response: "JSON object returned by AppManager.scale(name, replicas)."
+      error: "Handler errors surface as HTTP 500; leader-required 503 is raised before handler execution; request validation is handled by FastAPI."
+      auth: "No user authentication declared; leader_required checks controller leadership."
+    target_contract:
+      method: "POST /apps/{name}/scale with ScaleRequest JSON."
+      notes: "Preserve the replicas range and current response behavior."
+    semantic_divergence: []
+  - name: Set scaling policy
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:250"
+    contract:
+      method: "POST"
+      path: "/apps/{name}/policy"
+      request: "PolicyRequest JSON containing a policy map; handler defaults omitted values."
+      response: "JSON object with status=updated, app, and policy."
+      error: "Handler errors surface as HTTP 500; leader-required 503 is raised before handler execution."
+      auth: "No user authentication declared; leader_required checks controller leadership."
+    target_contract:
+      method: "POST /apps/{name}/policy with PolicyRequest JSON."
+      notes: "Preserve policy keys/defaults and event behavior."
+    semantic_divergence: []
+  - name: List applications
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:279"
+    contract:
+      method: "GET"
+      path: "/apps"
+      request: "No body or query parameters."
+      response: "JSON object {apps: [...]} where each app record is augmented with status, replicas, and ready_replicas."
+      error: "Handler errors surface as HTTP 500."
+      auth: "No authentication dependency declared."
+    target_contract:
+      method: "GET /apps -> {apps: [...]}"
+      notes: "Preserve the enriched list shape."
+    semantic_divergence: []
+  - name: Get raw application specification
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:298"
+    contract:
+      method: "GET"
+      path: "/apps/{name}/raw"
+      request: "No body; name is a path parameter."
+      response: "JSON object {name, raw, parsed}."
+      error: "HTTP 404 with detail when app is absent; other exceptions surface as HTTP 500."
+      auth: "No authentication dependency declared."
+    target_contract:
+      method: "GET /apps/{name}/raw -> {name, raw, parsed}"
+      notes: "Preserve raw submitted and normalized spec fields."
+    semantic_divergence: []
+  - name: Get application logs
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:321"
+    contract:
+      method: "GET"
+      path: "/apps/{name}/logs"
+      request: "Optional query parameter lines, default 100."
+      response: "With instances: JSON {app, total_containers, logs:[{timestamp, container, container_full, message}]}; without instances: {app, logs:[]}."
+      error: "Missing/not-running app is raised inside a broad catch and surfaces as HTTP 500; per-container Docker errors are logged and skipped."
+      auth: "No authentication dependency declared."
+    target_contract:
+      method: "GET /apps/{name}/logs?lines=<integer>"
+      notes: "Preserve timestamp ordering, selected log fields, and empty-instance response."
+    semantic_divergence: []
+  - name: Get application metrics
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:405"
+    contract:
+      method: "GET"
+      path: "/apps/{name}/metrics"
+      request: "No body; name is a path parameter."
+      response: "JSON object {app, metrics, scaling_history}; scaling history is requested with limit=10."
+      error: "Handler errors surface as HTTP 500."
+      auth: "No authentication dependency declared."
+    target_contract:
+      method: "GET /apps/{name}/metrics -> {app, metrics, scaling_history}"
+      notes: "Preserve summary and ten-entry scaling-history request."
+    semantic_divergence: []
+  - name: Simulate application metrics
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:422"
+    contract:
+      method: "POST"
+      path: "/apps/{name}/simulateMetrics"
+      request: "SimulatedMetricsRequest JSON: rps, p95LatencyMs, activeConnections, cpuPercent, memoryPercent, optional healthyReplicas, evaluate."
+      response: "JSON {app, metrics_added, evaluation, action}; evaluation/action may be null."
+      error: "HTTP 404 is preserved for an app not running; other handler errors surface as HTTP 500; leader-required 503 is raised before handler execution."
+      auth: "No user authentication declared; leader_required checks controller leadership."
+    target_contract:
+      method: "POST /apps/{name}/simulateMetrics with SimulatedMetricsRequest JSON."
+      notes: "Preserve camel-case request fields and the evaluate-controlled scale behavior."
+    semantic_divergence: []
+  - name: Get system metrics
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:492"
+    contract:
+      method: "GET"
+      path: "/metrics"
+      request: "No body or query parameters."
+      response: "JSON {timestamp, cluster, apps:{total,running}, instances:{total,healthy,unhealthy}, nginx, health_checks}."
+      error: "Handler errors surface as HTTP 500."
+      auth: "No authentication dependency declared."
+    target_contract:
+      method: "GET /metrics"
+      notes: "Preserve the system summary fields and nested structure."
+    semantic_divergence: []
+  - name: Get recent events
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:538"
+    contract:
+      method: "GET"
+      path: "/events"
+      request: "Optional query parameters app and limit (default 100)."
+      response: "JSON object {events: [...]}."
+      error: "Handler errors surface as HTTP 500."
+      auth: "No authentication dependency declared."
+    target_contract:
+      method: "GET /events?app=<optional>&limit=<integer>"
+      notes: "Preserve optional app filter and default limit."
+    semantic_divergence: []
+  - name: Get cluster status
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:549"
+    contract:
+      method: "GET"
+      path: "/cluster/status"
+      request: "No body or query parameters."
+      response: "JSON object returned by DistributedController.get_cluster_status()."
+      error: "HTTP 503 with detail 'Clustering not enabled' when no cluster controller exists; other errors surface as HTTP 500."
+      auth: "No authentication dependency declared."
+    target_contract:
+      method: "GET /cluster/status"
+      notes: "Preserve the existing cluster status payload."
+    semantic_divergence: []
+  - name: Get cluster leader
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:561"
+    contract:
+      method: "GET"
+      path: "/cluster/leader"
+      request: "No body or query parameters."
+      response: "JSON leader information returned by DistributedController.get_leader_info()."
+      error: "HTTP 503 when clustering is disabled; the no-leader HTTPException is caught by the broad handler and surfaces as HTTP 500."
+      auth: "No authentication dependency declared."
+    target_contract:
+      method: "GET /cluster/leader"
+      notes: "Preserve the leader payload and current error behavior."
+    semantic_divergence: []
+  - name: Cluster health
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:577"
+    contract:
+      method: "GET"
+      path: "/cluster/health"
+      request: "No body or query parameters."
+      response: "JSON reports status, clustering, timestamp, version; when enabled includes node_id, state, is_leader, leader_id, cluster_size, cluster_ready."
+      error: "If clustering is disabled, returns a healthy/disabled payload. Exceptions return an unhealthy/error payload without explicitly changing the HTTP status."
+      auth: "No authentication dependency declared."
+    target_contract:
+      method: "GET /cluster/health"
+      notes: "Preserve disabled, ready/degraded, and caught-error payload variants."
+    semantic_divergence: []
+  - name: Load-balancer health
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:614"
+    contract:
+      method: "GET"
+      path: "/lb-health"
+      request: "No body or query parameters."
+      response: "JSON {status, service, timestamp, version}."
+      error: "No handler error branch declared."
+      auth: "No authentication dependency declared."
+    target_contract:
+      method: "GET /lb-health"
+      notes: "Preserve the controller route; the separate Nginx load-balancer config also serves /lb-health."
+    semantic_divergence: []
+  - name: Node health
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:624"
+    contract:
+      method: "GET"
+      path: "/health"
+      request: "No body or query parameters."
+      response: "JSON {status, timestamp, version}."
+      error: "No handler error branch declared."
+      auth: "No authentication dependency declared."
+    target_contract:
+      method: "GET /health"
+      notes: "Preserve the node health payload."
+    semantic_divergence: []
+  - name: Swagger UI
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:48"
+    contract:
+      method: "GET"
+      path: "/docs"
+      request: "No body or query parameters."
+      response: "FastAPI-generated Swagger UI HTML, statically inferred from default docs_url."
+      error: "Live localhost route was inaccessible during analysis."
+      auth: "No authentication dependency declared."
+    target_contract:
+      method: "GET /docs serving FastAPI-generated Swagger UI."
+      notes: "Keep the existing Swagger UI available alongside the planned dashboard."
+    semantic_divergence: []
+  - name: ReDoc UI
+    unit: controller-api-surface
+    type: rest
+    stability: must_preserve
+    source_loc: "controller/api.py:48"
+    contract:
+      method: "GET"
+      path: "/redoc"
+      request: "No body or query parameters."
+      response: "FastAPI-generated ReDoc HTML, statically inferred from default redoc_url."
+      error: "Live localhost route was not verified."
+      auth: "No authentication dependency declared."
+    target_contract:
+      method: "GET /redoc serving FastAPI-generated ReDoc."
+      notes: "Preserve the existing default documentation route."
+    semantic_divergence: []
+  - name: OpenAPI schema
+    unit: controller-api-surface
+    type: rest
+    stability: frozen
+    source_loc: "controller/api.py:48"
+    contract:
+      method: "GET"
+      path: "/openapi.json"
+      request: "No body or query parameters."
+      response: "FastAPI-generated OpenAPI JSON for registered routes, statically inferred from default openapi_url."
+      error: "Live localhost route/schema content was inaccessible during analysis."
+      auth: "No authentication dependency declared."
+    target_contract:
+      method: "GET /openapi.json serving the generated schema."
+      notes: "Preserve the schema endpoint that backs the existing documentation UI."
+    semantic_divergence: []

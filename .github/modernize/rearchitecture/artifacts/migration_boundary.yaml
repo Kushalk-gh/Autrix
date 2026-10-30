@@ -1,0 +1,28 @@
+user_intent:
+  raw_request: "Prepare source-grounded architecture artifacts as a prerequisite to planning a new user-friendly dashboard alongside the existing Swagger UI."
+  inferred_acceptance:
+    - "A new browser dashboard is added as a client of the existing Orchestry API."
+    - "The current FastAPI API and generated Swagger UI remain available alongside the dashboard."
+    - "Do not assume frontend files, components, or a target framework that are absent from source."
+  cleanup_required: false
+strategy: minimal_runtime
+runtime_reachable:
+  - controller/api.py
+must_rewrite: []
+copy_as_is:
+  - controller/api.py
+  - controller/utils/models.py
+  - controller/utils/lifecycle.py
+  - controller/manager.py
+  - controller/scaler.py
+  - controller/health.py
+  - controller/cluster.py
+  - state/db.py
+legacy_allowed_to_remain: []
+defer_cleanup: []
+full_rewrite_reason: null
+implementation_rule: >
+  This is an additive feature, not a backend rewrite. The planning phase must
+  choose concrete new dashboard paths and scope; none are present in source.
+  Keep the listed existing API/docs behavior as-is unless the user changes
+  acceptance. Do not infer implementation scope from the API source anchors.

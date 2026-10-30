@@ -1,0 +1,230 @@
+batch_id: "B01"
+completed_tasks:
+  - T001
+  - T002
+  - T003
+  - T004
+  - T005
+  - T006
+  - T007
+  - T008
+  - T009
+  - T010
+  - T011
+  - T012
+  - T013
+  - T014
+blocked_tasks: []
+files_changed:
+  T001:
+    - file: ".github/modernize/rearchitecture/dashboard-ui/plan.md"
+      change_type: modified
+      description: "Recorded live OpenAPI parity with 19 operations."
+  T002:
+    - file: "controller/api.py"
+      change_type: modified
+      description: "Added dashboard and Classic API Docs routes and static asset mount."
+  T003:
+    - file: "controller/dashboard/index.html"
+      change_type: created
+      description: "Added responsive dashboard structure and navigation."
+    - file: "controller/dashboard/styles.css"
+      change_type: created
+      description: "Added dashboard, docs wrapper, responsive, and focus styles."
+  T004:
+    - file: "controller/dashboard/classic-api-docs.html"
+      change_type: created
+      description: "Added switchable wrapper around the unchanged Swagger page."
+  T005:
+    - file: "controller/dashboard/app.js"
+      change_type: created
+      description: "Added same-origin API client, route handling, error states, and dashboard actions."
+  T006:
+    - file: "controller/dashboard/app.js"
+      change_type: created
+      description: "Added app, cluster, metrics, and events panels."
+  T007:
+    - file: "controller/dashboard/app.js"
+      change_type: created
+      description: "Wired app lifecycle, scale, and policy actions."
+  T008:
+    - file: "controller/dashboard/app.js"
+      change_type: created
+      description: "Added multi-step registration form and request generation."
+  T009:
+    - file: "controller/dashboard/app.js"
+      change_type: created
+      description: "Added app status, configuration, logs, and metrics details."
+  T010:
+    - file: "controller/dashboard/app.js"
+      change_type: created
+      description: "Added advanced simulated-metrics controls."
+  T011:
+    - file: "tests/test_dashboard_routes.py"
+      change_type: created
+      description: "Added page route, static asset, docs-wrapper, API schema, and operation mapping tests."
+    - file: "tests/test_dashboard_operations.py"
+      change_type: created
+      description: "Added AppSpec, request field, and API-client mapping tests."
+  T012:
+    - file: "test/dashboard-compose.override.yml"
+      change_type: created
+      description: "Added isolated PostgreSQL and nginx services using a unique Compose project."
+    - file: "e2e/dashboard-navigation.spec.js"
+      change_type: created
+      description: "Added dashboard/docs switching browser journey."
+    - file: "e2e/application-management.spec.js"
+      change_type: created
+      description: "Added mocked registration/read-back and lifecycle journey."
+    - file: "e2e/application-diagnostics.spec.js"
+      change_type: created
+      description: "Added diagnostics, error-state, keyboard, and responsive journey."
+    - file: "e2e/application-live-backend.integration.spec.js"
+      change_type: created
+      description: "Added live dashboard registration/read-back/deletion browser journey."
+    - file: "e2e/playwright.integration.config.js"
+      change_type: created
+      description: "Separated live integration browser run from the default API-mocked UI suite."
+    - file: "e2e/README.md"
+      change_type: modified
+      description: "Documented isolated infrastructure and real-backend test commands."
+  T013:
+    - file: "tests/test_dashboard_api_integration.py"
+      change_type: created
+      description: "Added real HTTP, database persistence, validation, and cleanup integration tests."
+    - file: ".github/modernize/rearchitecture/dashboard-ui/runtime-validation-report.md"
+      change_type: modified
+      description: "Recorded Docker-backed and live browser integration outcomes."
+    - file: ".github/modernize/rearchitecture/dashboard-ui/checkpoints/tasks-to-impl.yaml"
+      change_type: modified
+      description: "Completed task traceability and recorded test results."
+    - file: "e2e/package.json"
+      change_type: created
+      description: "Added isolated browser-test package scripts and pinned Playwright dependency."
+    - file: "e2e/package-lock.json"
+      change_type: created
+      description: "Locked browser-test package dependency tree."
+    - file: "e2e/playwright.config.js"
+      change_type: created
+      description: "Configured browser suite and controller base URL."
+  T014:
+    - file: "docs/index.md"
+      change_type: modified
+      description: "Added quick links to both UI modes."
+    - file: "docs/user-guide/quick-start.md"
+      change_type: modified
+      description: "Documented dashboard and Classic API Docs routes."
+    - file: "docs/user-guide/api-reference.md"
+      change_type: modified
+      description: "Replaced obsolete routes/examples with source-verified operation inventory and live-schema guidance."
+upstream_artifacts_consumed:
+  T001:
+    - artifact: ".github/modernize/rearchitecture/dashboard-ui/spec.md"
+      used_for: "Expected 17 user-facing operations plus two technical probes."
+    - artifact: ".github/modernize/rearchitecture/dashboard-ui/plan.md"
+      used_for: "Live OpenAPI parity acceptance criteria."
+  T002:
+    - artifact: ".github/modernize/rearchitecture/dashboard-ui/plan.md"
+      used_for: "Narrow routes, same-origin assets, and preservation boundary."
+  T003:
+    - artifact: ".github/modernize/rearchitecture/dashboard-ui/spec.md"
+      used_for: "Dashboard switch, plain-language and accessibility requirements."
+  T004:
+    - artifact: ".github/modernize/rearchitecture/dashboard-ui/spec.md"
+      used_for: "Classic docs retention and return-navigation requirements."
+  T005:
+    - artifact: ".github/modernize/rearchitecture/dashboard-ui/artifacts/wire_contracts.yaml"
+      used_for: "Existing API method/path contract."
+  T006:
+    - artifact: ".github/modernize/rearchitecture/dashboard-ui/spec.md"
+      used_for: "Application, monitoring, cluster, and event operations."
+  T007:
+    - artifact: ".github/modernize/rearchitecture/dashboard-ui/artifacts/wire_contracts.yaml"
+      used_for: "Existing lifecycle and scaling request paths."
+  T008:
+    - artifact: ".github/modernize/rearchitecture/dashboard-ui/spec.md"
+      used_for: "Guided app-registration scenarios."
+  T009:
+    - artifact: ".github/modernize/rearchitecture/dashboard-ui/spec.md"
+      used_for: "Raw spec, logs, and application metrics requirements."
+  T010:
+    - artifact: ".github/modernize/rearchitecture/dashboard-ui/spec.md"
+      used_for: "Advanced simulated-metrics requirement."
+  T011:
+    - artifact: ".github/modernize/rearchitecture/dashboard-ui/plan.md"
+      used_for: "Python API contract test scope."
+  T012:
+    - artifact: ".github/modernize/rearchitecture/dashboard-ui/plan.md"
+      used_for: "Playwright user journeys, API route scope, and responsive/accessibility checks."
+  T014:
+    - artifact: ".github/modernize/rearchitecture/dashboard-ui/spec.md"
+      used_for: "Verified operation inventory and UI navigation requirements."
+evidence_mapping:
+  T001:
+    - upstream: "spec.md#Source-backed user-facing operation inventory"
+      output: "GET /openapi.json"
+      evidence: "Live OpenAPI returned exactly the expected 19 method/path pairs."
+  T002:
+    - upstream: "plan.md#Step 1.2"
+      output: "controller/api.py"
+      evidence: "Live probes of /, /dashboard, /classic-api-docs, /dashboard-assets/* returned HTTP 200."
+  T011:
+    - upstream: "plan.md#T011"
+      output: "tests/test_dashboard_routes.py and tests/test_dashboard_operations.py"
+      evidence: "10 unittest cases passed."
+  T012:
+    - upstream: "plan.md#T012"
+      output: "e2e/*.spec.js"
+      evidence: "Three UI Playwright tests and one live-backend browser test passed using the isolated Compose services."
+  T013:
+    - upstream: "plan.md#T013"
+      output: "tests/test_dashboard_api_integration.py and runtime-validation-report.md"
+      evidence: "Three API/database tests plus one live browser integration test passed; isolated Compose project was stopped and removed."
+  T014:
+    - upstream: "spec.md#operation inventory"
+      output: "docs/user-guide/api-reference.md"
+      evidence: "Documented all 17 user-facing operations plus both technical health probes."
+traceability:
+  - requirement: "REQ-001"
+    plan_item: "2.1, 2.2"
+    task: "T003, T004"
+    files: ["controller/dashboard/index.html", "controller/dashboard/classic-api-docs.html"]
+    status: "completed"
+  - requirement: "REQ-002"
+    plan_item: "1.1, 1.2"
+    task: "T001, T002"
+    files: ["controller/api.py", "tests/test_dashboard_routes.py"]
+    status: "completed"
+  - requirement: "REQ-004"
+    plan_item: "1.1, 2.3, 3.3, 4.3"
+    task: "T001, T005, T007, T010, T011"
+    files: ["controller/dashboard/app.js", "tests/test_dashboard_operations.py"]
+    status: "completed"
+  - requirement: "REQ-012"
+    plan_item: "2.1, 5.2"
+    task: "T003, T012"
+    files: ["controller/dashboard/styles.css", "e2e/application-diagnostics.spec.js"]
+    status: "completed"
+protocol_violation: false
+errors: []
+warnings:
+  - "Live app-start and scale side effects were not tested because they may launch or change Docker workloads."
+test_results:
+  T011:
+    command: "python -m unittest tests.test_dashboard_routes tests.test_dashboard_operations -v"
+    passed: 10
+    failed: 0
+    skipped: 0
+    failures: []
+  T012:
+    command: "npm test && npm run test:integration (from e2e/)"
+    passed: 4
+    failed: 0
+    skipped: 0
+    failures: []
+  T013:
+    command: "python -m unittest tests.test_dashboard_api_integration -v; npm run test:integration"
+    passed: 4
+    failed: 0
+    skipped: 0
+    failures: []

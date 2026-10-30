@@ -1,0 +1,12 @@
+{
+  "name": "orchestry-dashboard-e2e",
+  "private": true,
+  "scripts": {
+    "build": "node --check playwright.config.js && node --check playwright.integration.config.js && node --check dashboard-navigation.spec.js && node --check application-management.spec.js && node --check application-diagnostics.spec.js && node --check application-live-backend.integration.spec.js",
+    "test": "playwright test",
+    "test:integration": "playwright test --config=playwright.integration.config.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.55.0"
+  }
+}

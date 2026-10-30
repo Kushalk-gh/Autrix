@@ -1,0 +1,11 @@
+units:
+  - name: controller-api-surface
+    trigger: api
+    trigger_detail: "FastAPI HTTP surface: 19 source-declared operations plus default generated /docs, /redoc, and /openapi.json paths; API routes are root-relative."
+    source_anchors:
+      - path: controller/api.py
+        line: 48
+    exported_signature: []
+    dynamic_entrypoints: []
+    depends_on: []
+    shared_refs: []

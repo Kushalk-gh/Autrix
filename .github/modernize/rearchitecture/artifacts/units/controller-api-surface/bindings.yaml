@@ -1,0 +1,22 @@
+unit: controller-api-surface
+bindings:
+  - type: route-declaration
+    name: "FastAPI route decorators for the 19 HTTP operations listed in wire_contracts.yaml"
+    source_loc: "controller/api.py:96"
+    target: "FastAPI app route registry"
+    must_appear_in_target: true
+    notes: "Routes have no configured prefix and use the paths/methods recorded in wire_contracts.yaml."
+  - type: convention
+    name: "FastAPI default documentation endpoints (/docs, /redoc, /openapi.json)"
+    source_loc: "controller/api.py:48"
+    target: "FastAPI-generated Swagger UI, ReDoc, and OpenAPI schema"
+    must_appear_in_target: true
+    notes: "The constructor does not override docs_url, redoc_url, or openapi_url. These paths are statically inferred from FastAPI defaults; localhost runtime probing failed."
+  - type: filter
+    name: "CORSMiddleware"
+    source_loc: "controller/api.py:59"
+    target: "Browser-to-API cross-origin requests"
+    must_appear_in_target: true
+    notes: "Configured allow_origins=['*'], allow_credentials=true, allow_methods=['*'], allow_headers=['*']."
+runtime_config: []
+reason: "No dashboard or dashboard runtime configuration exists in source. API host/port settings are consumed by the controller daemon in controller/main.py, outside this route unit."
