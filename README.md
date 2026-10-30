@@ -42,16 +42,7 @@ Autrix is a container orchestration platform that provides:
 
 **Resource Management**: CPU/memory constraints and intelligent scaling policies
 
-## Documentation
 
-- Autrix Docs: https://admincodes7.github.io/Autrix/
-
-Quick links on the site:
-
-- Quick Start: https://admincodes7.github.io/Autrix/user-guide/quick-start/
-- CLI Reference: https://admincodes7.github.io/Autrix/user-guide/cli-reference/
-- API Reference: https://admincodes7.github.io/Autrix/user-guide/api-reference/
-- Architecture Overview: https://admincodes7.github.io/Autrix/developer-guide/architecture/
 
 ---
 
