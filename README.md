@@ -46,10 +46,5 @@ Autrix is a container orchestration platform that provides:
 
 ---
 
-## License
 
-This project is licensed under the [GNU GPLv3](LICENSE).
-
-
-Autrix â€” built for simplicity, designed for scale.
 
