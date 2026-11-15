@@ -10,6 +10,7 @@ on:
 
 jobs:
   test:
+    name: Python Tests (${{ matrix.python-version }})
     runs-on: ubuntu-24.04
 
     strategy:
@@ -29,13 +30,59 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -e .
+          pip install -r requirements.txt
+          pip install pytest
 
-      - name: Clean test artifacts
+      - name: Run safe Python tests
         run: |
-          find . -type d -name "__pycache__" -exec rm -rf {} +
+          python -m pytest -q \
+            tests/test_dashboard_operations.py \
+            tests/test_dashboard_routes.py
+
+  playwright:
+    name: Playwright E2E Tests
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+
+      - name: Install test server dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install fastapi uvicorn
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: e2e/package-lock.json
+
+      - name: Install Node dependencies
+        working-directory: e2e
+        run: npm ci
+
+      - name: Check JavaScript syntax
+        working-directory: e2e
+        run: npm run build
+
+      - name: Install Playwright Chromium
+        working-directory: e2e
+        run: npx playwright install --with-deps chromium
+
+      - name: Run standard Playwright tests
+        working-directory: e2e
+        env:
+          CI: 'true'
+        run: npm run test
 
   build-and-publish:
-    needs: test
+    needs: [test, playwright]
     runs-on: ubuntu-24.04
     if: startsWith(github.ref, 'refs/tags/')
 

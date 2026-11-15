@@ -1,5 +1,7 @@
 const { defineConfig } = require("@playwright/test");
 
+const useExternalServer = Boolean(process.env.ORCHESTRY_BASE_URL);
+
 module.exports = defineConfig({
   testDir: ".",
   testMatch: [
@@ -13,5 +15,13 @@ module.exports = defineConfig({
   use: {
     baseURL: process.env.ORCHESTRY_BASE_URL || "http://127.0.0.1:8765",
     headless: true
-  }
+  },
+  ...(useExternalServer ? {} : {
+    webServer: {
+      command: "python ../tests/e2e_test_server.py",
+      url: "http://127.0.0.1:8765/dashboard",
+      reuseExistingServer: !process.env.CI,
+      timeout: 30000
+    }
+  })
 });
