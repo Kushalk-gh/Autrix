@@ -373,10 +373,24 @@ class DistributedController:
             # Check if there's a current valid leader
             current_lease = self._get_current_lease()
             if current_lease and current_lease.expires_at > time.time():
-                # Valid leader exists
-                if current_lease.leader_id != self.leader_id:
-                    self.leader_id = current_lease.leader_id
-                    logger.info(f"👑 Acknowledged leader: {self.leader_id}")
+                # Valid leader exists: synchronize local term with the lease.
+                term_updated = False
+
+                with self._lock:
+                    if current_lease.term > self.current_term:
+                        self.current_term = current_lease.term
+                        term_updated = True
+                        logger.info(
+                            f"Updated local term from leader lease: {self.current_term}"
+                        )
+
+                    if current_lease.leader_id != self.leader_id:
+                        self.leader_id = current_lease.leader_id
+                        logger.info(f"Recognized current leader: {self.leader_id}")
+
+                if term_updated:
+                    self._update_node_status()
+
                 return False
 
             # No valid leader - check if we should start election
@@ -643,8 +657,9 @@ class DistributedController:
                     old_nodes = set(self.cluster_nodes.keys())
                     new_nodes = set(nodes.keys())
 
+                    self.cluster_nodes = nodes
+
                     if old_nodes != new_nodes:
-                        self.cluster_nodes = nodes
 
                         added = new_nodes - old_nodes
                         removed = old_nodes - new_nodes

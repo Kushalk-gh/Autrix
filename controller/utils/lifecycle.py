@@ -322,8 +322,8 @@ async def startup_event():
         # Initialize other components
         nginx_manager = DockerNginxManager()
         auto_scaler = AutoScaler()
-        health_checker = HealthChecker()
         app_manager = AppManager(state_store, nginx_manager)
+        health_checker = app_manager.health_checker
         
         # Start health checker
         await health_checker.start()

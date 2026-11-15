@@ -62,6 +62,32 @@ class AppManager:
         """Compatibility property for existing code."""
         return self.client
 
+
+    def _persist_instance(self, app_name: str, instance) -> bool:
+        """Persist a locally tracked Docker instance for all controllers."""
+        try:
+            from state.db import InstanceRecord
+
+            now = time.time()
+            record = InstanceRecord(
+                app_name=app_name,
+                container_id=instance.container_id,
+                ip=instance.ip,
+                port=instance.port,
+                status=getattr(instance, "state", "ready"),
+                created_at=getattr(instance, "created_at", getattr(instance, "last_seen", now)),
+                updated_at=now,
+                failure_count=getattr(instance, "failures", 0),
+                last_health_check=getattr(instance, "last_health_check", None),
+            )
+            saved = self.state_store.save_instance(record)
+            if not saved:
+                logger.error("Could not persist instance %s for %s", instance.container_id, app_name)
+            return saved
+        except Exception as e:
+            logger.error("Instance persistence failed for %s: %s", app_name, e)
+            return False
+
     def reconcile_app(self, app_name: str) -> int:
         """Adopt existing Docker containers for a registered app.
         Returns number of adopted (ready) instances."""
@@ -95,8 +121,15 @@ class AppManager:
                         network_settings = c.attrs.get("NetworkSettings", {})
                         ip = network_settings.get("Networks", {}).get("orchestry", {}).get("IPAddress", "")
                         port = app_spec_record.spec.get("ports", [{}])[0].get("containerPort", 0)
-                        # Skip if already tracked
-                        if any(inst.container_id == c.id for inst in self.instances[app_name]):
+                        # Persist existing instances too; another controller
+                        # may already have them in local memory.
+                        existing = next(
+                            (inst for inst in self.instances[app_name]
+                             if inst.container_id == c.id),
+                            None
+                        )
+                        if existing:
+                            self._persist_instance(app_name, existing)
                             continue
                         instance = ContainerInstance(
                             container_id=c.id,
@@ -106,7 +139,7 @@ class AppManager:
                             last_seen=time.time()
                         )
                         self.instances[app_name].append(instance)
-
+                        self._persist_instance(app_name, instance)
                         # Register with health checker if health config is specified
                         if "health" in app_spec_record.spec:
                             health_config = HealthChecker.create_config_from_spec(app_spec_record.spec["health"])
@@ -415,7 +448,7 @@ class AppManager:
             if app_name not in self.instances:
                 self.instances[app_name] = []
             self.instances[app_name].append(instance)
-
+            self._persist_instance(app_name, instance)
             if "health" in app_spec:
                 health_config = HealthChecker.create_config_from_spec(app_spec["health"])
                 self.health_checker.add_target(container.id, container_ip, container_port, health_config)
@@ -529,8 +562,12 @@ class AppManager:
             if not app_data:
                 return {"error": f"App {app_name} not found"}
 
+            # Synchronize local tracking with the shared Docker daemon.
+            # Each controller has its own in-memory instances dictionary.
+            self.reconcile_app(app_name)
+
             with self._lock:
-                if app_name not in self.instances:
+                if not self.instances.get(app_name):
                     return {
                         "app": app_name,
                         "status": "stopped",
@@ -1006,7 +1043,7 @@ class AppManager:
                         if app_name not in self.instances:
                             self.instances[app_name] = []
                         self.instances[app_name].append(instance)
-
+                        self._persist_instance(app_name, instance)
                     # Register with health checker if health config is specified
                     if "health" in app_spec_record.spec:
                         health_config = HealthChecker.create_config_from_spec(app_spec_record.spec["health"])
@@ -1037,7 +1074,7 @@ class AppManager:
                             if app_name not in self.instances:
                                 self.instances[app_name] = []
                             self.instances[app_name].append(instance)
-
+                            self._persist_instance(app_name, instance)
                         # Register with health checker if health config is specified
                         if "health" in app_spec_record.spec:
                             health_config = HealthChecker.create_config_from_spec(app_spec_record.spec["health"])
@@ -1118,7 +1155,7 @@ class AppManager:
                 if app_name not in self.instances:
                     self.instances[app_name] = []
                 self.instances[app_name].append(instance)
-
+                self._persist_instance(app_name, instance)
             # Register with health checker if health config is specified
             if "health" in app_spec_record.spec:
                 health_config = HealthChecker.create_config_from_spec(app_spec_record.spec["health"])
@@ -1317,7 +1354,7 @@ class AppManager:
             if app_name not in self.instances:
                 self.instances[app_name] = []
             self.instances[app_name].append(instance)
-
+            self._persist_instance(app_name, instance)
         # Register with health checker if health config is specified
         if "health" in app_spec:
             health_config = HealthChecker.create_config_from_spec(app_spec["health"])

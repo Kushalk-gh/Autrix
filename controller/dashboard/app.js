@@ -34,31 +34,109 @@
   const routeParts = () => location.hash.replace(/^#\/?/, "").split("/").filter(Boolean).map((part) => {
     try { return decodeURIComponent(part); } catch { return part; }
   });
-  const appUrl = (name, suffix = "") => `/apps/${encodeURIComponent(name)}${suffix}`;
+  const appUrl = (name, suffix = "") => {
+    const safeName = String(name ?? "").trim();
+    if (!safeName || safeName === "undefined" || safeName === "null" ||
+        safeName === "Unnamed application") {
+      throw new Error("A valid application name is required.");
+    }
+    return `/apps/${encodeURIComponent(safeName)}${suffix}`;
+  };
   const number = (value, fallback = 0) => {
     const parsed = Number(value);
     return Number.isFinite(parsed) ? parsed : fallback;
   };
 
   async function api(path, options = {}) {
-    const headers = new Headers(options.headers || {});
-    if (options.body !== undefined && !headers.has("Content-Type")) headers.set("Content-Type", "application/json");
-    const response = await fetch(path, { ...options, headers, cache: "no-store" });
+    const method = String(options.method || "GET").toUpperCase();
+    const writeMethods = new Set(["POST", "PUT", "PATCH", "DELETE"]);
+    const isWrite = writeMethods.has(method);
+    const validControllers = ["controller-1", "controller-2", "controller-3"];
+
+    let targetController = null;
+
+    // Discover the current leader before sending a write request.
+    if (isWrite) {
+      try {
+        const leaderResponse = await fetch("/cluster/leader", {
+          method: "GET",
+          cache: "no-store"
+        });
+
+        if (leaderResponse.ok) {
+          const leaderInfo = await leaderResponse.json();
+
+          if (validControllers.includes(leaderInfo?.leader_id)) {
+            targetController = leaderInfo.leader_id;
+          }
+        }
+      } catch (error) {
+        console.warn("Could not discover the current leader; using load-balancer fallback.", error);
+      }
+    }
+
+    const sendRequest = (controller) => {
+      const headers = new Headers(options.headers || {});
+
+      if (options.body !== undefined && !headers.has("Content-Type")) {
+        headers.set("Content-Type", "application/json");
+      }
+
+      if (controller) {
+        headers.set("X-Target-Controller", controller);
+      }
+
+      return fetch(path, {
+        ...options,
+        method,
+        headers,
+        cache: "no-store"
+      });
+    };
+
+    let response = await sendRequest(targetController);
+
+    // Retry only when a follower explicitly identifies another leader.
+    if (isWrite && response.status === 503) {
+      const currentLeader = response.headers.get("X-Current-Leader");
+
+      if (
+        validControllers.includes(currentLeader) &&
+        currentLeader !== targetController
+      ) {
+        console.warn(`Write request redirected to current leader: ${currentLeader}`);
+        response = await sendRequest(currentLeader);
+      }
+    }
+
     const text = await response.text();
     let data = null;
+
     if (text) {
-      try { data = JSON.parse(text); } catch { data = text; }
+      try {
+        data = JSON.parse(text);
+      } catch {
+        data = text;
+      }
     }
+
     if (!response.ok) {
-      const detail = data && typeof data === "object" ? data.detail || data.error || data.message : data;
+      const detail = data && typeof data === "object"
+        ? data.detail || data.error || data.message
+        : data;
+
       const message = Array.isArray(detail)
-        ? detail.map((item) => `${(item.loc || []).slice(-1)[0] || "Request"}: ${item.msg || "Invalid value"}`).join("; ")
+        ? detail.map((item) =>
+            `${(item.loc || []).slice(-1)[0] || "Request"}: ${item.msg || "Invalid value"}`
+          ).join("; ")
         : detail || response.statusText || "The request could not be completed.";
+
       const error = new Error(String(message));
       error.status = response.status;
       error.headers = response.headers;
       throw error;
     }
+
     return data;
   }
 
@@ -455,7 +533,14 @@
     const view = route[0] || "dashboard";
     if (view === "dashboard") return renderDashboard();
     if (view === "apps") return renderApps();
-    if (view === "app") return renderAppDetail(route[1], route[2] || "status");
+    if (view === "app") {
+      const app = String(route[1] ?? "").trim();
+      if (!app || app === "undefined" || app === "null" || app === "Unnamed application") {
+        location.hash = "#/apps";
+        return;
+      }
+      return renderAppDetail(app, route[2] || "status");
+    }
     if (view === "create") return renderWizard(number(route[1], 0));
     if (view === "cluster") return renderCluster();
     if (view === "metrics") return renderMetrics();
@@ -468,22 +553,98 @@
     location.hash = "#/dashboard";
   }
 
+
+  const appActionsInProgress = new Set();
+
   async function appAction(action, name, button) {
     if (!name) return;
+
+    // Prevent duplicate actions for the same application.
+    if (appActionsInProgress.has(name)) return;
+
     if (action === "stop" && !window.confirm(`Stop "${name}"? Its application instances will be stopped.`)) return;
     if (action === "delete" && !window.confirm(`Delete "${name}"? This cannot be undone.`)) return;
+
     const request = {
       start: () => api(appUrl(name, "/up"), { method: "POST" }),
       stop: () => api(appUrl(name, "/down"), { method: "POST" }),
       delete: () => api(appUrl(name), { method: "DELETE" })
     }[action];
+
     if (!request) return;
+
+    const originalLabel = button?.textContent || action;
+
+    appActionsInProgress.add(name);
+
+    if (button) {
+      button.disabled = true;
+      button.textContent = action === "start" ? "Starting…" : "Processing…";
+      button.setAttribute("aria-busy", "true");
+    }
+
     try {
       await request();
-      if (action === "delete") location.hash = "#/apps";
-      else await render();
+
+      if (action === "delete") {
+        location.hash = "#/apps";
+        return;
+      }
+
+      if (action === "start") {
+        // Wait until the application reports all running replicas as ready.
+        const timeoutAt = Date.now() + 30000;
+        let ready = false;
+
+        while (Date.now() < timeoutAt) {
+          await new Promise(resolve => window.setTimeout(resolve, 1000));
+
+          const status = await api(appUrl(name, "/status"));
+          const replicas = Number(status.replicas || 0);
+          const readyReplicas = Number(status.ready_replicas || 0);
+
+          if (
+            replicas > 0 &&
+            readyReplicas >= replicas &&
+            status.status === "running"
+          ) {
+            ready = true;
+            break;
+          }
+        }
+
+        await render();
+
+        if (ready) {
+          toast(`"${name}" is running and ready.`, "success");
+        } else {
+          toast(`"${name}" start request was accepted, but readiness is still pending.`, "warning");
+        }
+
+        return;
+      }
+
+      await render();
+
     } catch (error) {
       toast(`Could not ${action} "${name}": ${error.message}`, "error");
+
+      if (action === "start") {
+        try {
+          await render();
+        } catch (renderError) {
+          console.error("Dashboard refresh failed:", renderError);
+        }
+      }
+
+    } finally {
+      appActionsInProgress.delete(name);
+
+      if (button?.isConnected) {
+        button.disabled = false;
+        button.textContent = originalLabel;
+        button.removeAttribute("aria-busy");
+      }
     }
   }
 
@@ -501,7 +662,14 @@
     const action = button.dataset.action;
     if (action === "reload") return render();
     if (action === "start" || action === "stop" || action === "delete") return appAction(action, button.dataset.app, button);
-    if (action === "refresh-app") return renderAppDetail(button.dataset.app, routeParts()[2] || "status");
+    if (action === "refresh-app") {
+      const app = String(button.dataset.app ?? "").trim();
+      if (!app || app === "undefined" || app === "null" || app === "Unnamed application") {
+        toast("Cannot refresh: application name is missing.");
+        return;
+      }
+      return renderAppDetail(app, routeParts()[2] || "status");
+    }
     if (action === "wizard-prev") {
       readWizardForm();
       return renderWizard(Math.max(0, number(routeParts()[1]) - 1));
